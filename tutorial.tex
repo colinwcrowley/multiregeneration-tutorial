@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{enumerate,amsmath,amsthm,amssymb,amsfonts,mathtools}
+\usepackage{xcolor}
+\usepackage{listings}
+\title{\large \bf
+Title
+}
+\author{}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}                                                                                                      
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Div}{\text{Div}}
+\newcommand{\Hom}{\text{Hom}}
+\newcommand{\Jac}{\text{Jac}}
+\newcommand{\rk}{\text{rk}\ }
+\newcommand{\coker}{\text{coker}\ }
+\newcommand{\Princ}{\text{Princ}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}[1]{\mathbf{#1}}
+\newcommand{\Spt}{\text{support}}
+\begin{document}
+\maketitle
+\section{Getting Started}
+Say that we are given $n$ polynomials
+with complex coefficient in $n$ variables, such as the 
+following. 
+\begin{align*}
+    f_1 &= (x-1)(y-3)\\
+    f_2 &= (x-2)(y-4)\\
+\end{align*}
+Our goal is to describe algorithmically all points of the set 
+
+\[
+    \mathcal{V}(f_1, f_2) = \{(z_1,z_2) \in \C^2 : f_1(z_1, z_2) = 
+    f_2(z_1, z_2) = 0\}
+\]
+which we call the \emph{zero locus} or the \emph{vanishing} of $f_1$ and 
+$f_2$. 
+
+B\'{e}zout's Theorem (one formulation of it) states that if 
+$f_1, \ldots, f_n$ are complex polynomials in $n$ variables of degrees 
+$d_1, \ldots, d_n$ and $\mathcal{V}(f_1, \ldots, f_n)$ is finite, then 
+the size of $\mathcal{V}(f_1, \ldots, f_n)$ is at most $d_1d_2 \ldots d_n$. 
+For now we will assume that our system has finitely many solutions.
+Therefore the degrees $d_1, \ldots, d_n$ give an upper bound on the size 
+of the output, and in fact they are necessary for the algorithm itsself.
+
+To solve the system above, first we declare the names of our variables 
+in a file named ``bertiniInput\_variables'' with the following contents.
+
+\begin{lstlisting}
+    variable_group x,y; 
+\end{lstlisting}
+
+Next we declare the equations in a file named ``bertiniInput\_equations'' 
+with the following contents.
+
+\begin{lstlisting}
+    function f1,f2;
+    f1 = (x-1)*(y-3);
+    f2 = (x-2)*(y-4);
+\end{lstlisting}
+
+Create a file called ``bertiniInput\_trackingOptions'' which we will 
+leave blank for now.
+
+Finally, create a file called ``inputFile.py'' with the following 
+contents
+\begin{lstlisting}
+degrees = [[2], [2]]
+workingDirectory = "run"
+\end{lstlisting}
+
+Now we 
+
+\section{Multiple variable groups}
+\section{Projective variable groups}
+\section{Nonsquare systems}
+
+
+
+
+\end{document}
