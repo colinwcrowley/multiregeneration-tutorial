@@ -1,0 +1,42 @@
+Number of variables: 2
+Variables:  x y
+Rank: 2
+-------------------------
+At tol=1.000000000000e-10, there appear to be 0 solutions.
+
+
+*************** input file needed to reproduce this run ***************
+
+CONFIG
+
+ParameterHomotopy: 2;
+CoeffBound: 2.400565000000e+01;
+DegreeBound: 2.000000000000e+00;
+RandomSeed: 1579031609;
+
+END;
+
+INPUT
+
+variable_group x,y;
+parameter Tpath;
+function HF;
+function f1;
+f1=(x-1)*(y-3);
+f2=(x-2)*(y-4);
+l_0_0=(-0.138394686346+I*0.429503479391)*(x-(-0.667219823641+I*-0.272429818298))+(-0.122515985136+I*0.898750963624)*(y-(-0.694639051133+I*0.223473420115));
+r_0_0=(-0.901324621857+I*0.310928793178)*x+(0.134701989771+I*-0.870559180993)*y+(-0.100964842382+I*-0.801915677348);
+r_0_1=(0.975709523775+I*-0.750570594033)*x+(0.306824421555+I*-0.656605104641)*y+(-0.487271162404+I*0.150364451232);
+HF=Tpath*((1)*(r_0_0)*(r_0_1))+(1-Tpath)*(f2);
+
+END;
+
+
+*************** version information ***************
+Bertini(TM) v1.6
+GMP v6.0.0, MPFR v3.1.2
+
+Authors:
+D.J. Bates, J.D. Hauenstein,
+A.J. Sommese, C.W. Wampler
+

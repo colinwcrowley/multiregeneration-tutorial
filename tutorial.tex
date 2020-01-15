@@ -3,8 +3,16 @@
 \usepackage{enumerate,amsmath,amsthm,amssymb,amsfonts,mathtools}
 \usepackage{xcolor}
 \usepackage{listings}
+\usepackage{framed}
+
 \title{\large \bf
+<<<<<<< HEAD
 Multiregeneration Tutorial
+=======
+Title
+% A guide to \texttt{Regeneration Networks}
+% \texttt{Regeneration Networks} Tutorial
+>>>>>>> a4dde450d0c57d2577a6b247bec4a6fbccb28804
 }
 \author{}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}                                                                                                      
@@ -24,8 +32,16 @@ Multiregeneration Tutorial
 \begin{document}
 \maketitle
 \section{Getting Started}
+<<<<<<< HEAD
 Say that we are given the following $2$ polynomials
 with complex coefficient in $2$ variables. 
+=======
+Say that we are given $n$ polynomials
+with complex coefficients 
+% keep it simple and omit complex coefficients
+in $n$ variables, such as the 
+following. 
+>>>>>>> a4dde450d0c57d2577a6b247bec4a6fbccb28804
 \begin{align*}
     f_1 &= (x-1)(y-3)\\
     f_2 &= (x-2)(y-4)\\
@@ -39,8 +55,20 @@ with complex coefficient in $2$ variables.
 % which we call the \emph{zero locus} or the \emph{vanishing} of $f_1$ and 
 % $f_2$. \\
 
+<<<<<<< HEAD
 \noindent To solve the system above, let's change into the folder 
 ``getting-started'', which contains the following three files.\\
+=======
+B\'{e}zout's Theorem (one formulation of it) states that if 
+$f_1, \ldots, f_n$ are complex polynomials
+% complex polynomials or polynomials with complex coefficients 
+ in $n$ variables of degrees 
+$d_1, \ldots, d_n$ and $\mathcal{V}(f_1, \ldots, f_n)$ is finite, then 
+the size of $\mathcal{V}(f_1, \ldots, f_n)$ is at most $d_1d_2 \ldots d_n$. 
+For now we will assume that our system has finitely many solutions.
+Therefore the degrees $d_1, \ldots, d_n$ give an upper bound on the size 
+of the output, and in fact they are necessary for the algorithm itself.
+>>>>>>> a4dde450d0c57d2577a6b247bec4a6fbccb28804
 
 \noindent \textbf{bertiniInput\_variables}
 
@@ -48,7 +76,13 @@ with complex coefficient in $2$ variables.
     variable_group x,y; 
 \end{lstlisting}
 
+<<<<<<< HEAD
 \noindent \textbf{bertiniInput\_equations}
+=======
+
+Next we declare the equations in a file named ``bertiniInput\_equations'' 
+with the following contents.
+>>>>>>> a4dde450d0c57d2577a6b247bec4a6fbccb28804
 
 \begin{lstlisting}
     function f1,f2;
@@ -56,6 +90,7 @@ with complex coefficient in $2$ variables.
     f2 = (x-2)*(y-4);
 \end{lstlisting}
 
+<<<<<<< HEAD
 \noindent \textbf{bertiniInput\_trackingOptions}
 \emph{this file is empty}
 
@@ -105,6 +140,21 @@ The solutions will be contained in the folder
 \begin{lstlisting}
 run/_completed_smooth_solutions/depth_1
 \end{lstlisting}
+=======
+%%% I like the following style, but stick with lstlisting if you prefer it. 
+%\begin{leftbar}
+%\vspace{-10pt} 
+%\begin{verbatim}
+%function f1,f2;
+%f1 = (x-1)*(y-3);
+%f2 = (x-2)*(y-4);
+%\end{verbatim}\vspace{-10pt} 
+%\end{leftbar}
+
+Create a file called ``bertiniInput\_trackingOptions'' which we will 
+leave blank for now.
+% Can we adjust the implementation so that if this is not specified it still works?
+>>>>>>> a4dde450d0c57d2577a6b247bec4a6fbccb28804
 
 For this example, there are two files called 
 \begin{lstlisting}
