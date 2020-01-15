@@ -4,7 +4,7 @@
 \usepackage{xcolor}
 \usepackage{listings}
 \title{\large \bf
-Title
+Multiregeneration Tutorial
 }
 \author{}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}                                                                                                      
@@ -24,39 +24,31 @@ Title
 \begin{document}
 \maketitle
 \section{Getting Started}
-Say that we are given $n$ polynomials
-with complex coefficient in $n$ variables, such as the 
-following. 
+Say that we are given the following $2$ polynomials
+with complex coefficient in $2$ variables. 
 \begin{align*}
     f_1 &= (x-1)(y-3)\\
     f_2 &= (x-2)(y-4)\\
 \end{align*}
-Our goal is to describe algorithmically all points of the set 
+% Our goal is to describe algorithmically all points in the set 
 
-\[
-    \mathcal{V}(f_1, f_2) = \{(z_1,z_2) \in \C^2 : f_1(z_1, z_2) = 
-    f_2(z_1, z_2) = 0\}
-\]
-which we call the \emph{zero locus} or the \emph{vanishing} of $f_1$ and 
-$f_2$. 
+% \[
+%     \mathcal{V}(f_1, f_2) = \{(z_1,z_2) \in \C^2 : f_1(z_1, z_2) = 
+%     f_2(z_1, z_2) = 0\}
+% \]
+% which we call the \emph{zero locus} or the \emph{vanishing} of $f_1$ and 
+% $f_2$. \\
 
-B\'{e}zout's Theorem (one formulation of it) states that if 
-$f_1, \ldots, f_n$ are complex polynomials in $n$ variables of degrees 
-$d_1, \ldots, d_n$ and $\mathcal{V}(f_1, \ldots, f_n)$ is finite, then 
-the size of $\mathcal{V}(f_1, \ldots, f_n)$ is at most $d_1d_2 \ldots d_n$. 
-For now we will assume that our system has finitely many solutions.
-Therefore the degrees $d_1, \ldots, d_n$ give an upper bound on the size 
-of the output, and in fact they are necessary for the algorithm itsself.
+\noindent To solve the system above, let's change into the folder 
+``getting-started'', which contains the following three files.\\
 
-To solve the system above, first we declare the names of our variables 
-in a file named ``bertiniInput\_variables'' with the following contents.
+\noindent \textbf{bertiniInput\_variables}
 
 \begin{lstlisting}
     variable_group x,y; 
 \end{lstlisting}
 
-Next we declare the equations in a file named ``bertiniInput\_equations'' 
-with the following contents.
+\noindent \textbf{bertiniInput\_equations}
 
 \begin{lstlisting}
     function f1,f2;
@@ -64,19 +56,87 @@ with the following contents.
     f2 = (x-2)*(y-4);
 \end{lstlisting}
 
-Create a file called ``bertiniInput\_trackingOptions'' which we will 
-leave blank for now.
+\noindent \textbf{bertiniInput\_trackingOptions}
+\emph{this file is empty}
 
-Finally, create a file called ``inputFile.py'' with the following 
-contents
+\noindent \textbf{inputFile.py}
 \begin{lstlisting}
-degrees = [[2], [2]]
-workingDirectory = "run"
+    degrees = [[2], [2]]
+    workingDirectory = "run"
 \end{lstlisting}
 
-Now we 
+The first three files (those with the prefix ``bertiniInput'') are 
+written in the C-like syntax used by the bertini software. The last 
+file, ``inputFile.py'', contains the additional data that this 
+program needs.
+
+The variable ``degrees'' must be initialized to a list of lists, where 
+the $j$'th element of the $i$'th list is the degree of the $i$'th 
+function in the $j$th ``variable group.'' For this example there is only 
+one variable group consisting of $x,y$, and each function has degree two 
+in this variable group. Therefor we use the python syntax
+\begin{lstlisting}
+    degrees = [[2], [2]]
+\end{lstlisting}
+to create a list of two lists, where the single element of the first 
+list is the degree of $f_1$ and the single element of the second list is 
+the degree of $f_2$.
+
+The variable ``workingDirectory'' tell the program the name of the 
+folder where it should write the output. If we run the program a second 
+time, then a folder of that name will already exist, and it will be 
+deleted before anything else happens.
+
+To solve the system, we use python2 to run the ``multiregeneration.py'' 
+script \emph{from the ``getting-started'' folder}. The multiregeneration 
+script will look for input files in the directory from which it is run, 
+so make sure that you are in the directory with the system you wish to 
+solve. 
+
+\begin{lstlisting}
+python2 ../multiregeneration.py
+\end{lstlisting}
+
+If all goes well python will print out ``Done.'' and there should be 
+a new directory called ``run''. If there was an error, then the most 
+likely cause is that there was an error in one of the input files.
+
+The solutions will be contained in the folder 
+\begin{lstlisting}
+run/_completed_smooth_solutions/depth_1
+\end{lstlisting}
+
+For this example, there are two files called 
+\begin{lstlisting}
+solution_tracking_depth_1_gens_1_1_dim_0_varGroup_0_regenLinear_1_pointId_326664877375_788310760051
+solution_tracking_depth_1_gens_1_1_dim_0_varGroup_0_regenLinear_1_pointId_918720474422_183602510053 
+\end{lstlisting}
+The two file contain approximate complex values for the two solutions of 
+the initial system. For example the first file contains the following.
+
+\begin{lstlisting}
+    1.999999999999996e+00 -4.107825191113079e-15
+    3.000000000000000e+00 0.000000000000000e+00
+\end{lstlisting}
+
+\noindent The file can be read as
+\begin{align*}
+    x &= 1.999999999999996 \times 10^0 - (4.107825191113079 \times 
+    10^{-15})i\\
+    y &= 3.000000000000000 \times 10^0 - (0.0000000000000000 \times 
+    10^{0})i\\
+\end{align*}
+which is aproximately the solution $x = 2, y = 3$.
+
 
 \section{Multiple variable groups}
+B\'{e}zout's Theorem (one formulation of it) states that if 
+$f_1, \ldots, f_n$ are complex polynomials in $n$ variables of degrees 
+$d_1, \ldots, d_n$ and $\mathcal{V}(f_1, \ldots, f_n)$ is finite, then 
+the size of $\mathcal{V}(f_1, \ldots, f_n)$ is at most $d_1d_2 \ldots d_n$. 
+For now we will assume that our system has finitely many solutions.
+Therefore the degrees $d_1, \ldots, d_n$ give an upper bound on the size 
+of the output, and in fact they are necessary for the algorithm itsself.
 \section{Projective variable groups}
 \section{Nonsquare systems}
 
