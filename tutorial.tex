@@ -377,12 +377,59 @@ run/_completed_smooth_solutions/depth_1
 \noindent will be give the homogenius coordinates of the six 
 solutions.
 
-\section{Parallelization}
+\section{Numerical algebraic geometry}
+In this section we will introduce some of the language of numerical 
+algebraic geometry, so that we can describe how the program handles the 
+case where the solution set is infinite (i.e. that it contains positive 
+dimensional components).
+\section{Tips for large computations}
 
 One of the main advantages of numerical methods for solving polynomial 
 systems (over Gr\"{o}bner basis methods for instance) is that they are 
 very parallelizable. To use multiple processors to solve a system, we 
 can set the ``maxProcesses'' variable in ``inputFile.py''.
+
+\noindent \textbf{inputFile.py}
+\begin{leftbar}
+\vspace{-10pt} 
+\begin{verbatim}
+   degrees = [[3], [2]]
+   workingDirectory = "run" 
+   maxProcesses = 4
+\end{verbatim}\vspace{-10pt} 
+\end{leftbar}
+
+Adding more processes will only speed up the calculation if the number 
+you choose is less than or equal to the number of CPU cores on your 
+computer, and in fact adding more processes than you have cores will 
+slow things down.
+
+If you do not have enough time or space to find all of the solution to a 
+particular system, then it can sometimes still be worth it to find as 
+many solutions as you can. If this is the case, the it is recommended to 
+use the following option in ``inputFile.py''
+\noindent \textbf{inputFile.py}
+\begin{leftbar}
+\vspace{-10pt} 
+\begin{verbatim}
+   degrees = [[3], [2]]
+   workingDirectory = "run" 
+   explorationOrder = "depthFirst"
+\end{verbatim}\vspace{-10pt} 
+\end{leftbar}
+Setting this option will not decrease the time it takes for the program 
+to finish, however it will increase the number of solutions 
+found after any given time. Here is a vague explanation as to why: The 
+nature of the algorithm is that ``solutions at depth $n$'' lead to 
+``solutions at depth $n+1$.'' The solutions at the last depth are the 
+actual solutions to the system. In this way, the program first populates 
+one depth with solutions, and then moves to the next. Setting the 
+exploration order to ``depthFirst'' will ensure that if a solution is 
+found at depth $n$, then it is immediately used to find a solution at 
+depth $n+1$, before looking for other solutions at depth $n$. The result 
+is that the maximum number full depth solutions are found after any 
+given time.
+
 
 \begin{thebibliography}{9}
 \bibitem{cox} 
@@ -393,14 +440,6 @@ David Cox, John Little, and Donal O'shea.
 Josheph H. Silverman and John Tate.
 \textit{Rational Points on Elliptic Curves}. 
  
-\bibitem{einstein} 
-Albert Einstein. 
-\textit{Zur Elektrodynamik bewegter K{\"o}rper}. (German) 
-[\textit{On the electrodynamics of moving bodies}]. 
-Annalen der Physik, 322(10):891–921, 1905.
- 
-\bibitem{knuthwebsite} 
-Knuth: Computers and Typesetting,
 \end{thebibliography}
 
 \end{document}
