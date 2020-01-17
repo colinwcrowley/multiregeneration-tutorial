@@ -141,7 +141,12 @@ run/_completed_smooth_solutions/depth_1
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
 
-For this example, there are two files called 
+The ``depth'' refers to how many equations have been solved so far. At 
+depth $n$ the first $n+1$ equations have been solved, so for this 
+example we look at depth 1. Later we will say more about why this is, 
+but for the moment, know that the sulotions are always in the folder 
+corresponding to the last depth. Returning to our example, there are two 
+files called 
 
 \begin{leftbar}
 \vspace{-10pt} 
@@ -299,10 +304,103 @@ run/_completed_smooth_solutions/depth_1
 \end{leftbar}
 \noindent where we find the two solutions.
 
-\section{Projective variable groups}
-\section{Nonsquare systems}
+\section{Homogeneous variable groups}
+In this section we demonstrate how to solve systems of homogeneus 
+polynomials over complex projective space, which is a central idea in 
+algebraic geometry. For a good introduction to 
+projective space see chapter 8 sections 1 and 2 of \cite{cox}, or 
+apendix A of \cite{silverman}.
 
+Consider the following system of homogenius polynomials, representing 
+the intersection of two curves in the projective plane.
+\begin{align*}
+   f_1 &= y^2z - x^3 + z^3 - xyz &&= 0\\
+   f_2 &= yz - x^2 + xy - xz + z^2 &&= 0\\
+\end{align*}
+Observe that all terms in the first equation are degree three, and all 
+term is the second equations are degree two, so these equations are 
+indeed homogeneous of degrees two and three. If you input equations that 
+are not homogeneous, and then try to solve them over projective space it 
+will cause errors, so watch out for this.
 
+Change into the directory 
+called ``homogeneous-variable-groups'', which contains the following 
+files.\\
 
+\noindent \textbf{bertiniInput\_variables}
+\begin{leftbar}
+\vspace{-10pt} 
+\begin{verbatim}
+   hom_variable_group x,y,z;
+\end{verbatim}\vspace{-10pt} 
+\end{leftbar}
+
+\noindent \textbf{bertiniInput\_equations}
+\begin{leftbar}
+\vspace{-10pt} 
+\begin{verbatim}
+   function f1,f2;
+   f1 = y^2*z - x^3 + z^3 - x*y*z;
+   f2 = y*z - x^2 + x*y - x*z + z^2;
+\end{verbatim}\vspace{-10pt} 
+\end{leftbar}
+
+\noindent \textbf{bertiniInput\_trackingOptions}
+\emph{this file is empty}
+
+\noindent \textbf{inputFile.py}
+\begin{leftbar}
+\vspace{-10pt} 
+\begin{verbatim}
+   degrees = [[3], [2]]
+   workingDirectory = "run" 
+\end{verbatim}\vspace{-10pt} 
+\end{leftbar}
+
+The notable difference is that (1) our equations are homogeneous, and 
+(2) we have declared a ``hom\_variable\_group''.
+
+\noindent After running the program
+\begin{leftbar}
+\vspace{-10pt} 
+\begin{verbatim}
+python2 ../multiregeneration.py
+\end{verbatim}\vspace{-10pt} 
+\end{leftbar}
+\noindent the output in
+\begin{leftbar}
+\vspace{-10pt} 
+\begin{verbatim}
+run/_completed_smooth_solutions/depth_1
+\end{verbatim}\vspace{-10pt} 
+\end{leftbar}
+\noindent will be give the homogenius coordinates of the six 
+solutions.
+
+\section{Parallelization}
+
+One of the main advantages of numerical methods for solving polynomial 
+systems (over Gr\"{o}bner basis methods for instance) is that they are 
+very parallelizable. To use multiple processors to solve a system, we 
+can set the ``maxProcesses'' variable in ``inputFile.py''.
+
+\begin{thebibliography}{9}
+\bibitem{cox} 
+David Cox, John Little, and Donal O'shea.
+\textit{Ideals, Varieties, and Algorithms}. 
+
+\bibitem{silverman} 
+Josheph H. Silverman and John Tate.
+\textit{Rational Points on Elliptic Curves}. 
+ 
+\bibitem{einstein} 
+Albert Einstein. 
+\textit{Zur Elektrodynamik bewegter K{\"o}rper}. (German) 
+[\textit{On the electrodynamics of moving bodies}]. 
+Annalen der Physik, 322(10):891–921, 1905.
+ 
+\bibitem{knuthwebsite} 
+Knuth: Computers and Typesetting,
+\end{thebibliography}
 
 \end{document}

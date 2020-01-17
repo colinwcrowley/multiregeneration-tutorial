@@ -194,7 +194,7 @@ global pointGroupAction
 #            bertiniDegrees = f.read()
         with open("bertiniInput_equations", "r") as f:
             bertiniEquations = f.read()
-            print("found bertiniInput_equations")
+            # print("found bertiniInput_equations")
     except:
         print("Exiting due to incomplete input. Please include the following files:")
         print("\t" + "bertiniInput_variables")
@@ -290,8 +290,6 @@ global pointGroupAction
             maxdeg= 0
             for s in range(len(fNames)):
                 maxdeg= max(maxdeg,degrees[s][i])
-            print("%s is the maximum degree in variable group %s. "%(maxdeg,i))
-            print(getGenericLinearInVariableGroup(i))
             for d in range(maxdeg):
                 r[i].append(getGenericLinearInVariableGroup(i))
     elif loadDegreeLinears:
@@ -301,20 +299,19 @@ global pointGroupAction
             maxdeg= 0
             for s in range(len(fNames)):
                 maxdeg= max(maxdeg,degrees[s][i])
-            print("%s is the maximum degree in variable group %s. "%(maxdeg,i))
             with open("degreeLinears_%s" %i, "r") as f:
                 A = (line.rstrip() for line in f)
                 A = list(line for line in A if line)
             r.append(A)
     if verbose > 0:
-        print("Using degree linears")
-    for i in range(len(variables)):
-        for j in range(len(r[i])):
-            print("r[%s][%s]"%(i,j))
-            print(r[i][j])
+        print("\nUsing degree linears")
+        for i in range(len(variables)):
+            for j in range(len(r[i])):
+                print(r[i][j])
     if B== None:
         B=len(fNames)  # TODO: check that this is not off by one.
-        print("B is set to %d" % B)
+        if verbose > 1:
+            print("B is set to %d" % B)
     if verbose > 0:
         print("exploring tree in order", explorationOrder)
         #    return(random.randint(1,1000000)+abs(hash("_".join(P))) % (10 ** 8))
@@ -383,7 +380,8 @@ global pointGroupAction
                       jobsInPool.value)
 
     pool.close()
-    print("Done.")
+    if verbose > 0:
+        print("Done.")
 
 
 def processNode(args): # a wrapper funcion to catch error. This is
@@ -439,6 +437,8 @@ def outlineRegenerate(depth,G,B,bfe,P):
                     prune = dimGroupAction(bfePrime)
                 if not prune:
                     for j in range(M[i]):
+                        if verbose > 1:
+                            print "M[i] = %d, j = %d"%(M[i],j)
                         label="unknown"
 #                        print("We parentHomotopy at depth %s variable group %s degree %s and point %s" %(depth,i,j,hashPoint(P)))
                         dirTracking = directoryNameTracking(depth, G, bfePrime, i, j, P)
@@ -447,6 +447,8 @@ def outlineRegenerate(depth,G,B,bfe,P):
                                 os.makedirs(dirTracking)
                         if verbose > 1:
                           print("directory before branchHomotopy is", os.getcwd())
+                        if verbose > 1:
+                            print "Calling branch homotopy with vg = %d, rg = %d, M[vg] = %d"%(i,j,M[i])
                         (PPrime,label) = branchHomotopy(dirTracking, depth, G, bfePrime,bfe, i, j, M, P)
                         if verbose > 1:
                           print("directory after branchHomotopy is", os.getcwd())
@@ -474,28 +476,28 @@ def outlineRegenerate(depth,G,B,bfe,P):
                             completedSmoothSolutions = "_completed_smooth_solutions"
                             # TODO: have a group action to find additional solutions
                             PPi=[]
-                            for i in range(len(variables)):
+                            for i2 in range(len(variables)):
                                 ppGroup = []
-                                for j in range(len(variables[i])):
+                                for j2 in range(len(variables[i2])):
                                     ppGroup.append(PPrime[count])
                                     count = count +1;
                                 PPi.append(ppGroup)
                             #print("PPi")
                             #print(PPi)
-                            LP = pointGroupAction(bfePrime,i,PPi)
+                            LP = pointGroupAction(bfePrime,i2,PPi)
                             for PPi in LP:
                                 #print("ppi2")
                                 #print(PPi)
                                 PPrime = []
-                                for i in range(len(PPi)):
-                                    for j in range(len(PPi[i])):
-                                        PPrime.append(PPi[i][j])
+                                for i3 in range(len(PPi)):
+                                    for j3 in range(len(PPi[i])):
+                                        PPrime.append(PPi[i3][j3])
                                 #print(PPrime)
                                 #print(len(PPrime))
                                 solText = "\n"
                                 for line in PPrime:
                                     solText += line+"\n"
-                                solName = directoryNameTrackingSolution(depth, G, bfePrime, i, j, PPrime, startHash)
+                                solName = directoryNameTrackingSolution(depth, G, bfePrime, i3, j3, PPrime, startHash)
                                 try:
                                   startFile = open(completedSmoothSolutions+"/depth_%s/%s" %(depth,solName), "w")
                                   startFile.write(solText)
@@ -698,6 +700,9 @@ def branchHomotopy(dirTracking,depth, G, bfePrime,bfe, vg, rg, M, P):
     writePStart(P,"P")
     writeParameters()
     ## Now we do PQ
+    if verbose > 1:
+        print "vg = %s, rg = %s, bfePrime[eval(vg)] = %d"%(
+            vg,rg,bfePrime[eval(vg)])
     sfPQ="l_%s_%d" %(vg,bfePrime[eval(vg)])
     tfPQ="r_%s_%s" %(vg,rg)
     inputTextPQ = bertiniParameterHomotopyTwoTemplate %(bertiniTrackingOptionsText,
