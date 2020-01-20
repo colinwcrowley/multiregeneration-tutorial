@@ -103,18 +103,11 @@ To solve the system above using the multiregeneration software, let's change int
 \end{leftbar}
 
 The first three files (those with the prefix ``bertiniInput'') are 
-written in the C-like syntax used by the bertini software. The last 
+written in the C-like syntax used by the bertini software. 
+
+The last 
 file, ``inputFile.py'', contains the additional data that this 
-program needs.
-
-\begin{remark}
-For the expert user there are many bertini options which can 
-improve performance. These can be added 
-to the file ``bertiniInput\_trackingOptions'', and one can refer to Appendix~A of the  Bertini user manual for more details. 
-\end{remark}
-% but we will ingnore them for now.
-% Can we adjust the implementation so that if this is not specified it still works?
-
+program needs, namely degree information. 
 The variable ``degrees'' must be initialized to a list of lists, where 
 the $j$'th element of the $i$'th list is the degree of the $i$'th 
 function in the $j$th ``variable group.'' For this example there is only 
@@ -131,10 +124,22 @@ in this variable group. Therefore we use the python syntax
 list is the degree of $f_1$ and the single element of the second list is 
 the degree of $f_2$.
 
+\red{We don't need to specify the working directory for the program to run. 
+ }
+ 
 The variable ``workingDirectory'' tells the program the name of the 
 folder where it should write the output. If we run the program a second 
 time, then a folder of that name will already exist, and it will be 
 deleted before anything else happens.
+
+\begin{remark}
+For the expert user there are many bertini options which can 
+improve performance. These can be added 
+to the file ``bertiniInput\_trackingOptions'', and one can refer to Appendix~A of the  Bertini user manual for more details. 
+\end{remark}
+% but we will ingnore them for now.
+% Can we adjust the implementation so that if this is not specified it still works?
+
 
 \subsection{Solving}
 To solve the system, we use python2 to run the ``multiregeneration.py'' 
