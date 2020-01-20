@@ -6,6 +6,7 @@
 \usepackage{framed}
 
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem{remark}{Remark}[section]
 
 \title{\large \bf
 Multiregeneration Tutorial
@@ -30,8 +31,8 @@ Multiregeneration Tutorial
 \begin{document}
 \maketitle
 \section{Getting Started}
-Say that we are given the following $2$ polynomials
-in $2$ variables. 
+Say that we are given the following two polynomials
+in the variables $x,y$. 
 \begin{align*}
     f_1 &= (x-1)(y-3)\\
     f_2 &= (x-2)(y-4)\\
@@ -90,26 +91,27 @@ program needs.
 
 For the expert user there are many bertini options which can 
 improve performance. These can be added 
-to the file ``bertiniInput\_trackingOptions'' but we will ingnore them for now.
+to the file ``bertiniInput\_trackingOptions'', and one can refer to Appendix~A of the  Bertini user manual for more details. 
+% but we will ingnore them for now.
 % Can we adjust the implementation so that if this is not specified it still works?
 
 The variable ``degrees'' must be initialized to a list of lists, where 
 the $j$'th element of the $i$'th list is the degree of the $i$'th 
 function in the $j$th ``variable group.'' For this example there is only 
 one variable group consisting of $x,y$, and each function has degree two 
-in this variable group. Therefor we use the python syntax
-
+in this variable group. Therefore we use the python syntax
+%
 \begin{leftbar}
 \vspace{-10pt} 
 \begin{verbatim}
     degrees = [[2], [2]]
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
-to create a list of two lists, where the single element of the first 
+\noindent to create a list of two lists, where the single element of the first 
 list is the degree of $f_1$ and the single element of the second list is 
 the degree of $f_2$.
 
-The variable ``workingDirectory'' tell the program the name of the 
+The variable ``workingDirectory'' tells the program the name of the 
 folder where it should write the output. If we run the program a second 
 time, then a folder of that name will already exist, and it will be 
 deleted before anything else happens.
@@ -128,7 +130,7 @@ python2 ../multiregeneration.py
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
 
-If all goes well python will print out ``Done.'' and there should be 
+If all goes well python will print out ``Done.'' and there will be 
 a new directory called ``run''. If there was an error, then the most 
 likely cause is that there was an error in one of the input files.
 
@@ -357,7 +359,7 @@ files.\\
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
 
-The notable difference is that (1) our equations are homogeneous, and 
+There are two notable differences: (1) our equations are homogeneous, and 
 (2) we have declared a ``hom\_variable\_group''.
 
 \noindent After running the program
@@ -376,6 +378,10 @@ run/_completed_smooth_solutions/depth_1
 \end{leftbar}
 \noindent will be give the homogenius coordinates of the six 
 solutions.
+
+\begin{remark}
+One can also better performance by having multiple homogeneous groups or a mixture of homogeneous and affine groups. 
+\end{remark}
 
 \section{Numerical algebraic geometry}
 In this section we will introduce some of the language of numerical 
