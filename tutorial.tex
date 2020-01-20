@@ -25,6 +25,7 @@ Multiregeneration Tutorial
 \newcommand{\Princ}{\text{Princ}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\PP}{\mathbb{P}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\V}[1]{\mathbf{#1}}
@@ -391,11 +392,60 @@ solutions.
 One can also better performance by having multiple homogeneous groups or a mixture of homogeneous and affine groups. 
 \end{remark}
 
-\section{Numerical algebraic geometry}
-In this section we will introduce some of the language of numerical 
-algebraic geometry, so that we can describe how the program handles the 
-case where the solution set is infinite (i.e. that it contains positive 
-dimensional components).
+\section{Positive dimensional components}
+In this section we will introduce some of the language of 
+algebraic geometry and numerical algebraic geometry, so that we can 
+describe how the program handles the case where the solution set is 
+infinite (i.e. that it contains positive dimensional components).
+
+Recall that a set $A \subset \C^n$ is \emph{algebraic} or \emph{Zariski 
+closed} if it is of the form $\mathcal{V}(f_1, \ldots, f_N)$ for 
+polynomials $f_i$. Similarly, a set $A \subset \PP^n$ is 
+\emph{algebraic} or \emph{Zariski closed} if it is of the form 
+$\mathcal{V}(f_1, \ldots, f_N)$ for 
+homogeneous polynomials $f_i$. If an algebraic set is the union of 
+finitly many algebraic proper subsets, the it is \emph{reducible}. An 
+algebraic set that is not reducible is \emph{irreducible}. If $A$ is an 
+algebraic set, then a maximal irreducible algebraic subset of $A$ 
+is called an \emph{irreducible component of $A$}, or simply a 
+\emph{component of $A$}.
+
+The following fact is typically proven in a first commutative algebra or 
+algebraic geometry course.
+\begin{theorem}
+   Every algebraic set in $\C^n$ or $\PP^n$ is the union of finitely 
+   many irreducible components.
+\end{theorem}
+
+In the case where a polynomial system has infinitely many solutions, it is 
+often best to describe each component separately. As a simple example, 
+cosider the following.
+
+\begin{align*}
+   f_1 &= (y-x^2)(x-1) &&= 0\\
+   f_2 &= (y-x^2)(y) &&= 0
+\end{align*}
+
+The solutions consist of a parabola and a point, which are the two 
+irreducible components. This system can be found in the 
+``positive-dimensional'' folder. The following files contain the solutions.
+\begin{leftbar}
+\vspace{-10pt} 
+\begin{verbatim}
+      solution_tracking_depth_1_gens_1_1_dim_0_varGroup_0_regenLinear_1_pointId_151979748598_138051236175
+      solution_vanishing_depth_1_gens_1_0_dim_1_pointId_11020904120_11020904120
+      solution_vanishing_depth_1_gens_1_0_dim_1_pointId_462642055403_462642055403
+\end{verbatim}\vspace{-10pt} 
+\end{leftbar}
+The coordinates of the isolated point are contained in the files whose 
+name contains the string ``dim\_0''. The other two files, whose names 
+contain the string ``dim\_1'' are two points on the one dimensional 
+parabola, which is the other irreducible component. [ADD DEFINITION OF 
+DIMENSION?] Which two points of the parabola were chosen, and why? To 
+answer this question, we introduce some language from numerical 
+algebraic geometry.
+
+
 \section{Tips for large computations}
 
 One of the main advantages of numerical methods for solving polynomial 
