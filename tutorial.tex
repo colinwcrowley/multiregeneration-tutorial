@@ -6,6 +6,7 @@
 \usepackage{framed}
 
 \newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition} 
 \newtheorem{remark}{Remark}[section]
 
 \title{\large \bf
@@ -45,9 +46,10 @@ in the variables $x,y$.
 % \]
 % which we call the \emph{zero locus} or the \emph{vanishing} of $f_1$ and 
 % $f_2$. \\
-
-\noindent To solve the system above, let's change into the folder 
-``getting-started'', which contains the following three files.\\
+\noindent 
+By inspection, we see that the set of solutions consists of two points $\{ (1,4), (2,3)\}$.
+To solve the system above using the multiregeneration software, let's change into the folder 
+``getting-started'', which contains the following four files.\\
 
 \noindent \textbf{bertiniInput\_variables}
 
@@ -89,9 +91,11 @@ written in the C-like syntax used by the bertini software. The last
 file, ``inputFile.py'', contains the additional data that this 
 program needs.
 
+\begin{remark}
 For the expert user there are many bertini options which can 
 improve performance. These can be added 
 to the file ``bertiniInput\_trackingOptions'', and one can refer to Appendix~A of the  Bertini user manual for more details. 
+\end{remark}
 % but we will ingnore them for now.
 % Can we adjust the implementation so that if this is not specified it still works?
 
