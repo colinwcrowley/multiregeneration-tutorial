@@ -32,6 +32,7 @@ Multiregeneration Tutorial
 \begin{document}
 \maketitle
 \section{Getting Started}
+\subsection{Input files}
 Say that we are given the following two polynomials
 in the variables $x,y$. 
 \begin{align*}
@@ -120,6 +121,7 @@ folder where it should write the output. If we run the program a second
 time, then a folder of that name will already exist, and it will be 
 deleted before anything else happens.
 
+\subsection{Solving}
 To solve the system, we use python2 to run the ``multiregeneration.py'' 
 script \emph{from the ``getting-started'' folder}. The multiregeneration 
 script will look for input files in the directory from which it is run, 
@@ -184,6 +186,7 @@ which is aproximately the solution $x = 2, y = 3$.
 
 
 \section{Multiple variable groups}
+\subsection{Multihomogeneous B\'{e}zout's Theorem}
 To motivate the notion of variable groups, we begin by stating the 
 following formulation of B\'{e}zout's Theorem.
 
@@ -248,6 +251,7 @@ Returning to our example, let us define variable groups $\mathbf{x}_1 =
 we see that $B = 2$. So if $\mathcal{V}(f_1, f_2)$ is finite, its size is 
 at most two.
 
+\subsection{Solving with multiple variable groups}
 When solving a polynomial system, if there is a variable group structure 
 that gives a low multi-homogenius B\'{e}zout number, then this 
 gives us better garunties about the number of solutions we will find. 
@@ -310,7 +314,7 @@ run/_completed_smooth_solutions/depth_1
 \end{leftbar}
 \noindent where we find the two solutions.
 
-\section{Homogeneous variable groups}
+\section{Solving with homogeneous variable groups}
 In this section we demonstrate how to solve systems of homogeneus 
 polynomials over complex projective space, which is a central idea in 
 algebraic geometry. For a good introduction to 
