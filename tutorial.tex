@@ -1,9 +1,14 @@
 \documentclass[12pt]{article}
 \usepackage[margin=1.1in]{geometry}
+
 \usepackage{enumerate,amsmath,amsthm,amssymb,amsfonts,mathtools}
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage{framed}
+
+\usepackage{url}
+\definecolor{hot}{RGB}{65,105,225}
+\usepackage[pagebackref=true,colorlinks=true, linkcolor=hot ,  citecolor=hot, urlcolor=hot]{hyperref}%make all the references and links clickable
 
 \newtheorem{theorem}{Theorem}[section]
 \theoremstyle{definition} 
@@ -29,8 +34,18 @@ Multiregeneration Tutorial
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\V}[1]{\mathbf{#1}}
 \newcommand{\Spt}{\text{support}}
+
+% Colors
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\magenta}[1]{{\color{magenta}#1}}
+
 \begin{document}
 \maketitle
+\begin{abstract} 
+\red{Insert abstract}
+\end{abstract}
+
 \section{Getting Started}
 \subsection{Input files}
 Say that we are given the following two polynomials
@@ -319,7 +334,7 @@ In this section we demonstrate how to solve systems of homogeneus
 polynomials over complex projective space, which is a central idea in 
 algebraic geometry. For a good introduction to 
 projective space see chapter 8 sections 1 and 2 of \cite{cox}, or 
-apendix A of \cite{silverman}.
+appendix A of \cite{silverman}.
 
 Consider the following system of homogenius polynomials, representing 
 the intersection of two curves in the projective plane.
@@ -452,6 +467,15 @@ order, and using multiple variable groups versus a single variable
 group.
 
 
+\red{
+When possible bibtex information from references 
+should be selected from Mathscinet
+\url{https://search.library.wisc.edu/search/database?q=mathscinet}
+
+\noindent Here is a link to learn how to use bibtex\newline
+\url{https://www.unf.edu/~wkloster/latex/bib.html}.
+
+}
 \begin{thebibliography}{9}
 \bibitem{cox} 
 David Cox, John Little, and Donal O'shea.
