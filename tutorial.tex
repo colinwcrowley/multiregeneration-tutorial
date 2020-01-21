@@ -457,14 +457,75 @@ irreducible components. This system can be found in the
       solution_vanishing_depth_1_gens_1_0_dim_1_pointId_462642055403_462642055403
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
+
 The coordinates of the isolated point are contained in the files whose 
 name contains the string ``dim\_0''. The other two files, whose names 
 contain the string ``dim\_1'' are two points on the one dimensional 
-parabola, which is the other irreducible component. [ADD DEFINITION OF 
-DIMENSION?] Which two points of the parabola were chosen, and why? To 
-answer this question, we introduce some language from numerical 
-algebraic geometry.
+parabola, which is the other irreducible component. Which two points of 
+the parabola were chosen, and why? To answer this question, we introduce 
+some language from numerical algebraic geometry.
 
+By a \emph{hyperplane in $\C^n$}, we mean a variety of the form 
+$\mathcal{V}(a_0 + a_1x_1 + \ldots + a_nx_n)$ where one of $a_1, \ldots, 
+a_n$ is not zero. By a \emph{hyperplane in 
+$\PP^n$} we mean a variety of the form $\mathcal{V}(a_0x_0 + a_1x_1 
++ \ldots + a_nx_n)$ where one of $a_0, \ldots, a_n$ is not zero. 
+Intuitively, a \emph{general hyperplane} is a 
+hyperplane where the parameters $a_i$ are choosen at random, and satisfy 
+no special relations. Here is a more precise definition. Note that 
+parameters $a_i$ and $a'_i$ define the same hyperplane in $\PP^n$ if and 
+only if there exists $\lambda \in \C$ such that $\lambda a_i = a'_i$. Therefore 
+there is a bijection between hyperplanes in $\PP^n$ and equivilance 
+classes of $(a_0, \ldots, a_n)$ up to scaling, where one $a_i$ is not 
+zero. This is to say that the set of hyperplanes in $\PP^n$ can itself be 
+identified with another copy of $\PP^n$ with homogeneous coordinates 
+$a_i$. To avoid confusion with the original $\PP^n$, we will denote the 
+space of hyperplanes in $\PP^n$ by $(\PP^n)^\vee$. When we say that a 
+generic hyperplane in $\PP^n$ has a certain property, we mean that the 
+set of hyperplanes that does not have this property is a Zariski closed 
+set in $(\PP^n)^\vee$.
+
+\begin{remark}
+   One can show that Zariski closed sets have measure zero, so if a 
+   generic hyperplane has a certain property, then all hyperplanes away 
+   from a set of measure zero have that property.
+\end{remark}
+\begin{remark}
+   The set of hyperplanes in $\C^n$ does not have the structure of 
+   $\PP^n$, because for $\mathcal{V}(a_0 + a_1x_1 + \ldots + a_nx_n)$ to 
+   be a well defined hyperplane, we need for some $a_i$ other than $a_0$ 
+   to be nonzero. From this it follows that the set of hyperplanes in 
+   $\C^n$ has the structure of $(\PP^n)^\vee - \mathcal{V}(a_1, \ldots, 
+   a_n)$. A generic hyperplane in $\C^n$ can be defined in a similar 
+   way.
+\end{remark}
+
+The following fact is often proved with the use of more powerful 
+theorems such as Bertini's theorem and Bezout's theorem, but we want to 
+get down to business, so we will take it for granted.
+
+\begin{theorem}
+   Let $X$ be an irreducible algebraic variety in $\C^n$ or $\PP^n$. 
+   Then there is unique number $d$ such that the intersection of $X$ 
+   with $n-d$ generic hyperplanes is finite and nonempty. Moreover, the 
+   size of the intersection does not depend on the choice of generic 
+   hyperplanes.
+\end{theorem}
+
+The number $d$ we define to be the \emph{dimension of $X$}, and the number size 
+of the intersection is the \emph{degree of $X$}. \footnote{The degree of 
+a variety in $\C^n$ or $\PP^n$ is not an isomorphism invariant, since it 
+depends on the embedding.}
+
+Returning to the example above, the two points on the parabola which 
+were outputed were the intersection of the parabola with one generic 
+hyperplane. As we would expect, the fact that there are two of them 
+means that the parabola has degree two. One of the main ideas 
+in numerical algebraic geometry, is that many questions about a $d$ 
+dimensional irreducible variety in $\C^n$ or $\PP^n$ can be answered by knowing the 
+it's intersection with $n-d$ generic hyperplanes. This intersection is 
+called a \emph{witness set for $X$}. For more information 
+about this, see...
 
 \section{Tips for large computations}
 
