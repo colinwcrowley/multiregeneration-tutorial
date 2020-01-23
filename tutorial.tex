@@ -5,6 +5,7 @@
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage{framed}
+\usepackage{cite}
 
 \usepackage{url}
 \definecolor{hot}{RGB}{65,105,225}
@@ -330,8 +331,8 @@ run/_completed_smooth_solutions/depth_1
 In this section we demonstrate how to solve systems of homogeneus 
 polynomials over complex projective space, which is a central idea in 
 algebraic geometry. For a good introduction to 
-projective space see chapter 8 sections 1 and 2 of \cite{cox}, or 
-appendix A of \cite{silverman}.
+projective space see chapter 8 sections 1 and 2 of \cite{clo}, or 
+appendix A of \cite{st}.
 
 Consider the following system of homogenius polynomials, representing 
 the intersection of two curves in the projective plane.
@@ -512,9 +513,11 @@ means that the parabola has degree two. One of the main ideas
 in numerical algebraic geometry is that many questions about a $d$ 
 dimensional irreducible variety in $\C^n$ or $\PP^n$ can be answered by knowing the 
 its intersection with $n-d$ generic hyperplanes. This intersection is 
-called a \emph{witness set for $X$}. For more information 
-about this, and examples of other questions which can be answered with 
-witness sets, see...
+called a \emph{witness set for $X$}. 
+
+% For more information 
+% about this, and examples of other questions which can be answered with 
+% witness sets, see...
 
 \section{Tips for large computations}
 
@@ -569,25 +572,8 @@ seconds, so you can experiment with parallel processing, depth first
 order, and using multiple variable groups versus a single variable 
 group.
 
+\bibliographystyle{abbrv}
 
-\red{
-When possible bibtex information from references 
-should be selected from Mathscinet
-\url{https://search.library.wisc.edu/search/database?q=mathscinet}
-
-\noindent Here is a link to learn how to use bibtex\newline
-\url{https://www.unf.edu/~wkloster/latex/bib.html}.
-
-}
-\begin{thebibliography}{9}
-\bibitem{cox} 
-David Cox, John Little, and Donal O'shea.
-\textit{Ideals, Varieties, and Algorithms}. 
-
-\bibitem{silverman} 
-Josheph H. Silverman and John Tate.
-\textit{Rational Points on Elliptic Curves}. 
- 
-\end{thebibliography}
+\bibliography{tutorial}
 
 \end{document}
