@@ -90,8 +90,6 @@ To solve the system above using the multiregeneration software, let's change int
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
 
-\noindent \textbf{bertiniInput\_trackingOptions}
-\emph{this file is empty}
 
 \noindent \textbf{inputFile.py}
 
@@ -99,7 +97,6 @@ To solve the system above using the multiregeneration software, let's change int
 \vspace{-10pt} 
 \begin{verbatim}
     degrees = [[2], [2]]
-    workingDirectory = "run"
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
 
@@ -125,13 +122,10 @@ in this variable group. Therefore we use the python syntax
 list is the degree of $f_1$ and the single element of the second list is 
 the degree of $f_2$.
 
-\red{We don't need to specify the working directory for the program to run. 
- }
- 
-The variable ``workingDirectory'' tells the program the name of the 
-folder where it should write the output. If we run the program a second 
-time, then a folder of that name will already exist, and it will be 
-deleted before anything else happens.
+% The variable ``workingDirectory'' tells the program the name of the 
+% folder where it should write the output. If we run the program a second 
+% time, then a folder of that name will already exist, and it will be 
+% deleted before anything else happens.
 
 \begin{remark}
 For the expert user there are many bertini options which can 
@@ -302,15 +296,12 @@ files.\\
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
 
-\noindent \textbf{bertiniInput\_trackingOptions}
-\emph{this file is empty}
 
 \noindent \textbf{inputFile.py}
 \begin{leftbar}
 \vspace{-10pt} 
 \begin{verbatim}
     degrees = [[1,1], [1,1]]
-    workingDirectory = "run"
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
 
@@ -376,15 +367,12 @@ files.\\
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
 
-\noindent \textbf{bertiniInput\_trackingOptions}
-\emph{this file is empty}
 
 \noindent \textbf{inputFile.py}
 \begin{leftbar}
 \vspace{-10pt} 
 \begin{verbatim}
    degrees = [[3], [2]]
-   workingDirectory = "run" 
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
 
@@ -521,11 +509,12 @@ Returning to the example above, the two points on the parabola which
 were outputed were the intersection of the parabola with one generic 
 hyperplane. As we would expect, the fact that there are two of them 
 means that the parabola has degree two. One of the main ideas 
-in numerical algebraic geometry, is that many questions about a $d$ 
+in numerical algebraic geometry is that many questions about a $d$ 
 dimensional irreducible variety in $\C^n$ or $\PP^n$ can be answered by knowing the 
-it's intersection with $n-d$ generic hyperplanes. This intersection is 
+its intersection with $n-d$ generic hyperplanes. This intersection is 
 called a \emph{witness set for $X$}. For more information 
-about this, see...
+about this, and examples of other questions which can be answered with 
+witness sets, see...
 
 \section{Tips for large computations}
 
@@ -539,7 +528,6 @@ can set the ``maxProcesses'' variable in ``inputFile.py''.
 \vspace{-10pt} 
 \begin{verbatim}
    degrees = [[3], [2]]
-   workingDirectory = "run" 
    maxProcesses = 4
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
@@ -558,7 +546,6 @@ use the following option in ``inputFile.py''
 \vspace{-10pt} 
 \begin{verbatim}
    degrees = [[3], [2]]
-   workingDirectory = "run" 
    explorationOrder = "depthFirst"
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}

@@ -188,8 +188,11 @@ global pointGroupAction
     try:
         with open("bertiniInput_variables", "r") as f:
             bertiniVariablesAndConstants = f.read()
-        with open("bertiniInput_trackingOptions", "r") as f:
-            bertiniTrackingOptionsText = f.read()
+        if os.path.exists("bertiniInput_trackingOptions"):
+            with open("bertiniInput_trackingOptions", "r") as f:
+                bertiniTrackingOptionsText = f.read()
+        else:
+            bertiniInput_trackingOptions = ""
 # TODO:       with open("bertiniInput_degrees", "r") as f:
 #            bertiniDegrees = f.read()
         with open("bertiniInput_equations", "r") as f:
@@ -257,7 +260,7 @@ global pointGroupAction
         print("Solutions in a 'linearProduct' directory and :")
         for c, f in enumerate(fNames): # 0 is the depth we start with
             if c >= depth:
-                print("depth > "+str(c)+" satisfy "+ f+" = 0")
+                print("depth >= "+str(c)+" satisfy "+ f+" = 0")
 # Determine random linear polynomials l[i][j] and start solution
     if loadDimensionLinearsAndStartSolution:
         l = []
