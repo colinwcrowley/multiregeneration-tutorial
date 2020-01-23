@@ -168,9 +168,9 @@ run/_completed_smooth_solutions/depth_1
 The ``depth'' refers to how many equations have been solved so far. At 
 depth $n$ the first $n+1$ equations have been solved, so for this 
 example we look at depth 1. Later we will say more about why this is, 
-but for the moment, know that the sulotions are always in the folder 
+but for the moment, know that the solutions are always in the folder 
 corresponding to the last depth. Returning to our example, there are two 
-files called 
+files called  
 
 \begin{leftbar}
 \vspace{-10pt} 
@@ -266,11 +266,15 @@ Returning to our example, let us define variable groups $\mathbf{x}_1 =
 \]
 we see that $B = 2$. So if $\mathcal{V}(f_1, f_2)$ is finite, its size is 
 at most two.
+By grouping the variables we have a better bound on the number of solutions. 
+Multiregeneration uses algorithms that take advantage of multivariable group structure to improve performance. 
+
+
 
 \subsection{Solving with multiple variable groups}
 When solving a polynomial system, if there is a variable group structure 
 that gives a low multi-homogenius B\'{e}zout number, then this 
-gives us better garunties about the number of solutions we will find. 
+gives us better guarantees about the number of solutions we will find. 
 Moreover, the program can take advantage of this extra structure to do 
 less work.
 
@@ -452,7 +456,7 @@ name contains the string ``dim\_0''. The other two files, whose names
 contain the string ``dim\_1'' are two points on the one dimensional 
 parabola, which is the other irreducible component. Which two points of 
 the parabola were chosen, and why? To answer this question, we introduce 
-some language from numerical algebraic geometry.
+some language from numerical algebraic geometry \cite{BertiniBook}.
 
 By a \emph{hyperplane in $\C^n$}, we mean a variety of the form 
 $\mathcal{V}(a_0 + a_1x_1 + \ldots + a_nx_n)$ where one of $a_1, \ldots, 
