@@ -321,9 +321,9 @@ files.\\
 The only differences when using multiple variable groups are the 
 declaration of multiple variable groups in ``bertiniInput\_variables'' 
 and the entries of the ``degree'' variable, which now contains the 
-multidegrees $Deg(f_1)$ and $Deg(f_2)$.
+multidegrees $\Deg(f_1)$ and $\Deg(f_2)$.
 
-\noindent As before we run
+ As before we run
 \begin{leftbar}
 \vspace{-10pt} 
 \begin{verbatim}
@@ -337,7 +337,7 @@ python2 ../multiregeneration.py
 run/_completed_smooth_solutions/depth_1
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
-\noindent where we find the two solutions.
+\noindent where we find the two solution files.
 
 \section{Solving with homogeneous variable groups}
 In this section we demonstrate how to solve systems of homogeneous 
@@ -346,15 +346,18 @@ algebraic geometry. For a good introduction to
 projective space see chapter 8 sections 1 and 2 of \cite{clo}, or 
 appendix A of \cite{st}.
 
-Consider the following system of homogeneous polynomials, representing 
-the intersection of two curves in the projective plane.
+Consider the two homogeneous polynomials
 \begin{align*}
-   f_1 &= y^2z - x^3 + z^3 - xyz &&= 0\\
-   f_2 &= yz - x^2 + xy - xz + z^2 &&= 0\\
+   f_1 &= y^2z - x^3 + z^3 - xyz \\
+   f_2 &= yz - x^2 + xy - xz + z^2. \\
 \end{align*}
 Observe that all terms in the first equation are degree three, and all 
 term is the second equations are degree two, so these equations are 
-indeed homogeneous of degrees two and three. If you input equations that 
+indeed homogeneous of degrees two and three. 
+The common roots of these polynomials
+represent
+the intersection of two curves in the projective plane.
+If you input equations that 
 are not homogeneous, and then try to solve them over projective space it 
 will cause errors, so watch out for this.
 
@@ -392,7 +395,7 @@ files.\\
 There are two notable differences: (1) our equations are homogeneous, and 
 (2) we have declared a ``hom\_variable\_group''.
 
-\noindent After running the program
+ After running the program
 \begin{leftbar}
 \vspace{-10pt} 
 \begin{verbatim}
