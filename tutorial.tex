@@ -102,7 +102,10 @@ To solve the system above using the multiregeneration software, let's change int
 \end{leftbar}
 
 The first two files (those with the prefix ``bertiniInput'') are 
-written in the C-like syntax used by the bertini software. 
+written in the C-like syntax used by the Bertini software. 
+In the ``bertiniInput\_variables" file, the unknowns of our system of polynomials are described as variable groups with one per line. 
+In the ``bertiniInput\_equations" file, our system of polynomials is described 
+by a line beginning with  "function" to set the polynomials whose common roots we aim to describe followed by one equation per line to define the polynomials in an expression of the unknowns. 
 
 The last 
 file, ``inputFile.py'', contains the additional data that this 
@@ -130,7 +133,7 @@ the degree of $f_2$.
 % deleted before anything else happens.
 
 \begin{remark}
-For the expert user there are many bertini options which can 
+For the expert user there are many Bertini options which can 
 improve performance. These can be added 
 to the file ``bertiniInput\_trackingOptions'', and one can refer to Appendix~A of the  Bertini user manual for more details. 
 \end{remark}
@@ -171,15 +174,19 @@ depth $n$ the first $n+1$ equations have been solved, so for this
 example we look at depth 1. Later we will say more about why this is, 
 but for the moment, know that the solutions are always in the folder 
 corresponding to the last depth. Returning to our example, there are two 
-files called  
+files that begin with   ``solution\_tracking\_": 
 
 \begin{leftbar}
 \vspace{-10pt} 
 \begin{verbatim}
-solution_tracking_depth_1_gens_1_1_dim_0_varGroup_0_regenLinear_1_pointId_326664877375_788310760051
-solution_tracking_depth_1_gens_1_1_dim_0_varGroup_0_regenLinear_1_pointId_918720474422_183602510053 
+solution_tracking_depth_1_gens_1_1_dim_0_varGroup_0_regenLinear_1
+_pointId_326664877375_788310760051
+
+solution_tracking_depth_1_gens_1_1_dim_0_varGroup_0_regenLinear_1
+_pointId_918720474422_183602510053 
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
+
 The two file contain approximate complex values for the two solutions of 
 the initial system. For example the first file contains the following.
 
@@ -199,7 +206,7 @@ the initial system. For example the first file contains the following.
     y &= 3.000000000000000 \times 10^0 + (0.0000000000000000 \times 
     10^{0})i\\
 \end{align*}
-which is aproximately the solution $x = 2, y = 3$.
+which is approximately the solution $(x,y) = (2, 3)$.
 
 
 \section{Multiple variable groups}
