@@ -203,7 +203,7 @@ which is aproximately the solution $x = 2, y = 3$.
 
 
 \section{Multiple variable groups}
-\subsection{Multihomogeneous B\'{e}zout's Theorem}
+\subsection{Multi-homogeneous B\'{e}zout's Theorem}
 To motivate the notion of variable groups, we begin by stating the 
 following formulation of B\'{e}zout's Theorem.
 
@@ -236,7 +236,7 @@ Let us remove the $x^2$ and $y^2$ terms from the example above.
 The degrees $d_1$ and $d_2$ have not changed, so the B\'{e}zout bound 
 still predicts four solutions. However, removing the square terms 
 reduced the number of solutions to two. This is a consequence of the 
-Multi-homogenius B\'{e}zout theorem, which we state below.
+Multi-homogeneous B\'{e}zout theorem, which we state below.
 
 Say that for each $1 \leq i \leq k$ we have a group of variables 
 $\mathbf{x}_i = (x_{i,1}, \ldots, x_{i,n_i})$, for a total of $n := n_1 
@@ -256,7 +256,7 @@ $\alpha_1\ldots \alpha_k$. If $\mathcal{V}(f_1, \ldots, f_N)$ is finite,
 than its size is at most $B$.
 \end{theorem}
 
-The number $B$ is called the \emph{multi-homogenius B\'{e}zout number}.
+The number $B$ is called the \emph{multi-homogeneous B\'{e}zout number}.
 
 Returning to our example, let us define variable groups $\mathbf{x}_1 = 
 (x), \mathbf{x}_2 = (y)$. Then $\Deg(f_1) = (1,1)$ and $\Deg(f_2) = 
@@ -274,7 +274,7 @@ Multiregeneration uses algorithms that take advantage of multivariable group str
 
 \subsection{Solving with multiple variable groups}
 When solving a polynomial system, if there is a variable group structure 
-that gives a low multi-homogenius B\'{e}zout number, then this 
+that gives a low multi-homogeneous B\'{e}zout number, then this 
 gives us better guarantees about the number of solutions we will find. 
 Moreover, the program can take advantage of this extra structure to do 
 less work.
@@ -333,13 +333,13 @@ run/_completed_smooth_solutions/depth_1
 \noindent where we find the two solutions.
 
 \section{Solving with homogeneous variable groups}
-In this section we demonstrate how to solve systems of homogeneus 
+In this section we demonstrate how to solve systems of homogeneous 
 polynomials over complex projective space, which is a central idea in 
 algebraic geometry. For a good introduction to 
 projective space see chapter 8 sections 1 and 2 of \cite{clo}, or 
 appendix A of \cite{st}.
 
-Consider the following system of homogenius polynomials, representing 
+Consider the following system of homogeneous polynomials, representing 
 the intersection of two curves in the projective plane.
 \begin{align*}
    f_1 &= y^2z - x^3 + z^3 - xyz &&= 0\\
@@ -399,7 +399,7 @@ python2 ../multiregeneration.py
 run/_completed_smooth_solutions/depth_1
 \end{verbatim}\vspace{-10pt} 
 \end{leftbar}
-\noindent will be give the homogenius coordinates of the six 
+\noindent will be give the homogeneous coordinates of the six 
 solutions.
 
 \begin{remark}
