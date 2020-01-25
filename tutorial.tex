@@ -15,7 +15,8 @@
 \theoremstyle{definition} 
 \newtheorem{remark}{Remark}[section]
 
-\title{\large \bf
+\title{%\large \bf
+\vspace{-24pt}
 Multiregeneration Tutorial
 }
 \author{}
@@ -54,17 +55,15 @@ Say that we are given the following two polynomials
 in the variables $x,y$. 
 \begin{align*}
     f_1 &= (x-1)(y-3)\\
-    f_2 &= (x-2)(y-4)\\
+    f_2 &= (x-2)(y-4)
 \end{align*}
 % Our goal is to describe algorithmically all points in the set 
-
 % \[
 %     \mathcal{V}(f_1, f_2) = \{(z_1,z_2) \in \C^2 : f_1(z_1, z_2) = 
 %     f_2(z_1, z_2) = 0\}
 % \]
 % which we call the \emph{zero locus} or the \emph{vanishing} of $f_1$ and 
 % $f_2$. \\
-\noindent 
 By inspection, we see that the set of solutions consists of two points $\{ (1,4), (2,3)\}$.
 To solve the system above using the multiregeneration software, let's change into the folder 
 ``getting-started'', which contains the following three files.\\
@@ -228,27 +227,28 @@ solutions is exactly this bound, so in the case of general equations of
 degrees $d_1, \ldots, d_n$ this worst case bound cannot be improved.
 
 Here is a simple example to illustrate this bound.
+Consider the system given by the two quadratic polynomials
 \begin{align*}
     f_1 &= x^2 + xy + x - y\\
-    f_2 &= y^2 + 4xy - 2y
+    f_2 &= y^2 + 4xy - 2y.
 \end{align*}
 We can verify as in the previous section that this system has exactly 
 $d_1d_2 = 4$ solutions.
 
-Let us remove the $x^2$ and $y^2$ terms from the example above.
+Let us remove the $x^2$ and $y^2$ terms from the example above, and consider a system given by the polynomials
 \begin{align*}
     f_1 &= xy + x - y\\
-    f_2 &= 4xy - 2y
+    f_2 &= 4xy - 2y.
 \end{align*}
 The degrees $d_1$ and $d_2$ have not changed, so the B\'{e}zout bound 
 still predicts four solutions. However, removing the square terms 
 reduced the number of solutions to two. This is a consequence of the 
-Multi-homogeneous B\'{e}zout theorem, which we state below.
+Multi-homogeneous B\'{e}zout Theorem, which we state below.
 
 Say that for each $1 \leq i \leq k$ we have a group of variables 
 $\mathbf{x}_i = (x_{i,1}, \ldots, x_{i,n_i})$, for a total of $n := n_1 
 + \ldots + n_k$ variables. Let $f(\mathbf{x}_1, \ldots, 
-\mathbf{x}_k)$ denote a polynomail in all $n$ variables. We define the 
+\mathbf{x}_k)$ denote a polynomial in all $n$ variables. We define the 
 \emph{multidegree} of $f$ to be the integer vector $\Deg(f) = 
 (\Deg_1(f), \ldots, \Deg_k(f))$ where $\Deg_i(f)$ is the degree of $f$ 
 treating all variables except for $\mathbf{x}_i$ as constants.
@@ -349,7 +349,7 @@ appendix A of \cite{st}.
 Consider the two homogeneous polynomials
 \begin{align*}
    f_1 &= y^2z - x^3 + z^3 - xyz \\
-   f_2 &= yz - x^2 + xy - xz + z^2. \\
+   f_2 &= yz - x^2 + xy - xz + z^2. 
 \end{align*}
 Observe that all terms in the first equation are degree three, and all 
 term is the second equations are degree two, so these equations are 
@@ -411,6 +411,7 @@ run/_completed_smooth_solutions/depth_1
 \end{leftbar}
 \noindent will be give the homogeneous coordinates of the six 
 solutions.
+Often, these coordinates are scaled so that the max norm of its entries is one. 
 
 \begin{remark}
 One can also better performance by having multiple homogeneous groups or a mixture of homogeneous and affine groups. 
@@ -443,11 +444,10 @@ algebraic geometry course.
 
 In the case where a polynomial system has infinitely many solutions, it is 
 often best to describe each component separately. As a simple example, 
-cosider the following.
-
+consider the system given~by 
 \begin{align*}
-   f_1 &= (y-x^2)(x-1) &&= 0\\
-   f_2 &= (y-x^2)(y) &&= 0
+   f_1 &= (y-x^2)(x-1) \\
+   f_2 &= (y-x^2)(y).
 \end{align*}
 
 The solutions consist of a parabola and a point, which are the two 
