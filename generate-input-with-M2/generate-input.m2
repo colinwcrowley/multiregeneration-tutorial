@@ -25,6 +25,11 @@ system = {x^2*y + y*z^2 + y*x + 2, y^2 + x^2 - z^2*y^2 + 1, x*y*z - 5}
 -- the grouping below is a good guess for the best variable grouping.
 variableGroups = {{x,z}, {y}}
 
+-- If you don't want to worry about variable groups, then just make one
+-- group contining all the variables by uncommenting the following line.
+
+-- variableGroups = {{x,y,z}}
+
 -- STEP 3: Write the file "bertiniInput_variables"
 
 -- First we remove the file "bertiniInput_variables" if it exists already,
