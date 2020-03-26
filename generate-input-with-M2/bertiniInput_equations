@@ -1,0 +1,4 @@
+function f1,f2,f3;
+f1 = x^2*y+y*z^2+x*y+2;
+f2 = -y^2*z^2+x^2+y^2+1;
+f3 = x*y*z-5;

@@ -1,0 +1,21 @@
+R = CC[x,y,z]
+
+-- Run whatever code you need to to get the system you want --
+
+
+
+--------------------------------------------------------------
+
+-- Here's an example system you might like to solve 
+system = {x^2*y + y*z^2 + y*x + 2, y^2 + x^2 - z^2*y^2 + 1, x*y*z - 5}
+
+-- Here are some example variable groups. Variable group 0 is {x,z} and variable group 1 is {y}
+-- Recall that choosing different variable groups could speed up or slow down the computation.
+-- What you want to look for when choosing variable groups is for variables in the same group (e.g. x and z)
+-- not to be in the same terms. You can see that in the system above, x and z are rarely in the same term, so
+-- the grouping below is a good guess for the best variable grouping.
+variable_groups = {{x,z}, {y}}
+
+-- Now we write the input files for multiregeneration.py
+
+-- First we need the equations

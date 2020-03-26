@@ -1,0 +1,105 @@
+R = CC[x,y,z]
+
+-- This is a helper function that adds commas in between
+-- each pair of consequtive strings in a list. e.g. 
+-- addCommas({"a","b","c"})
+joinWithCommas = L -> (
+    output = L;
+    for i from 1 to length(L)-1 do 
+        output = insert(2*i-1, ",", output);
+    concatenate(output)
+    )
+
+-- STEP 1: Run whatever code you need to to get the system you want.
+-- Here's an example system you might like to solve 
+system = {x^2*y + y*z^2 + y*x + 2, y^2 + x^2 - z^2*y^2 + 1, x*y*z - 5}
+
+-- STEP 2: Choose variable groups.
+-- Here are some example variable groups. Variable group 0 is {x,z} and variable group 1 is {y}
+-- Recall that choosing different variable groups could speed up or slow down the computation.
+-- What you want to look for when choosing variable groups is for variables in the same group (e.g. x and z)
+-- not to be in the same terms. You can see that in the system above, x and z are rarely in the same term, so
+-- the grouping below is a good guess for the best variable grouping.
+variableGroups = {{x,z}, {y}}
+
+-- DEBUG
+-- variableGroups = {{x,y,z}}
+
+-- STEP 3: Write the input files for multiregeneration.py
+-- Following the tutorial, we first need to write the file "bertiniInput_variables"
+
+
+-- First we remove the file "bertiniInput_variables" if it exists already,
+-- and start freash.
+removeFile "bertiniInput_variables"
+
+-- The following loop write each line of our new "bertiniInput_variables"
+-- file one at a time
+for group in variableGroups do (
+    -- convert our list of variables into a list of strings
+    variableStringList = for variable in group list toString(variable);
+    
+    -- add a comma between each pair of strings (see docs for "insert")
+	
+    -- Concatenate our list of strings together into one string
+    variableString = joinWithCommas(variableStringList);
+    
+    -- Add a line to the "bertiniInput_variables" file corresponding
+    -- to the current variable group. The "|" character concatenates two strings
+    -- together, and the "\n" character represents a new line.
+    "bertiniInput_variables" << "variable_group "|variableString|";\n";
+)
+-- Now that we're done writing to "bertiniInput_variables", let's close it.
+"bertiniInput_variables" << close
+
+removeFile "bertiniInput_equations"
+
+functionNames = for i from 1 to length(system) list "f"|toString(i);
+
+"bertiniInput_equations" << "function "|joinWithCommas(functionNames)|";\n"
+
+for i from 0 to length(system)-1 do
+    "bertiniInput_equations" << functionNames_i|" = "|toString(system_i)|";\n";
+
+"bertiniInput_equations" << close
+    
+removeFile "inputFile.py"
+
+
+-- For each funtion, we want to list it's multidegree vector.
+multidegreesOfEquationsInSystem = for function in system list 
+(
+    for group in variableGroups list
+    (
+       -- The degree of the equation "function" in the variable group
+       -- "group" is given as the maximum of ...
+       max(
+           -- for each momomial in "function"...
+	   for monomial in terms(function) list 
+	   (
+	       -- the degree of the monomial in the variable group.
+	       -- The degree of a monomial in a group of variables is the sum
+	       -- of it's degree in each variable in the group.
+	       sum(group, variable -> degree(variable, monomial))
+	   )
+       )
+    )
+)
+
+pythonFormattedMultidegrees = toString(multidegreesOfEquationsInSystem)
+pythonFormattedMultidegrees = replace("\\{", "[",pythonFormattedMultidegrees)
+pythonFormattedMultidegrees = replace("\\}", "]",pythonFormattedMultidegrees)
+"inputFile.py" << "degrees = "|pythonFormattedMultidegrees|"\n"
+
+"inputFile.py" << "verbose = 1\n"
+
+"inputFile.py" << "explorationOrder = \"depthFirst\"\n"
+
+"inputFile.py" << close
+	
+
+
+
+
+
+

@@ -1,4 +1,6 @@
 import traceback
+import time
+from collections import Counter
 import shutil
 import sys
 import subprocess
@@ -78,10 +80,10 @@ def decJobsInPool(out):
             jobsInPool.value)
       jobsInPool.value-=1
       if verbose > 1:
-        print("new vaule is jobsInPool = ", jobsInPool.value)
+        print("new value is jobsInPool = ", jobsInPool.value)
 
 def main():
-    # We make these variables global so that inputFile.py can set them. 
+    # We make these variables global so that inputFile.py can set them.
     # After this they are never modified.
     global variables
     global depth
@@ -242,7 +244,7 @@ global pointGroupAction
         print("\nUsing start solution")
         for i in startSolution:
             print(i)
-        print("\nUsing dimesion linears")
+        print("\nUsing dimension linears")
         for i in range(len(variables)):
             for j in range(len(l[i])):
                 print("l[%s][%s]"%(i,j))
@@ -297,19 +299,28 @@ global pointGroupAction
 # branch node outline
 
     global queue
-    queue = mp.Manager().Queue() # a messege queue for the child
+    queue = mp.Manager().Queue() # a message queue for the child
     #processes to comunication with this one
+    global priorityQueue
     priorityQueue = PriorityQueue() # where this process, which is the
     #queue manager, stores the jobs that need to be done
 
     priorityQueue.put((0,[depth, G, B, bfe, startSolution]))
 
-    pool = mp.Pool(maxProcesses)
+    # One extra process for the progress updater
+    if verbose >= 1:
+        pool = mp.Pool(maxProcesses+1)
+    else:
+        pool = mp.Pool(maxProcesses)
 
     with jobsInPool.get_lock():
       jobsInPool.value = 0
 
-    #This loop looks for messeges from the child processes in the queue,
+    if verbose >= 1:
+      pool.apply_async(updateProgressInfo)
+
+
+    #This loop looks for messages from the child processes in the queue,
     # then puts them in the priority queue. When there is space for more
     # jobs, explore nodes in the priority queue.
     while True:
@@ -342,13 +353,14 @@ global pointGroupAction
                       priorityQueue.qsize(), "jobsInPool =",
                       jobsInPool.value)
 
+
     pool.close()
-    if verbose > 0:
-        print("Done.")
+    if verbose >=1:
+      updateProgressDisplay(cursorLeftAtBotten=True)
+      print("Done.")
 
 
-def processNode(args): # a wrapper funcion to catch error. This is
-#                           stupid, but it's a way to see when there is
+def processNode(args): # a wrapper function to catch error.  It's a way to see when there is
 #                           an error in one of the child processes.
   try:
     outlineRegenerate(args[0], args[1], args[2], args[3], args[4])
@@ -1024,6 +1036,61 @@ def directoryNameTracking(depth, G, bfe, varGroup, regenLinear, P):
         hashPoint(P)
         )
     return dirName
+
+def updateProgressDisplay(cursorLeftAtBotten = False):
+    maxDepth = len(os.listdir("_completed_smooth_solutions"))
+    # currentDepths = [int(s.split("_")[1]) for s in \
+    #     os.listdir("_completed_smooth_solutions")]
+    # currentDepths.sort()
+    solsAtDepth = \
+    [os.listdir("_completed_smooth_solutions/depth_"+str(depth))\
+      for depth in range(maxDepth)]
+
+    currentDisplay ="PROGRESS" + "\n"
+    for depth in range(maxDepth):
+      currentDisplay+=("Depth %d: %d\n"%(depth,len(solsAtDepth[depth])))
+
+    fullDepthDims = []
+    for s in solsAtDepth[-1]:
+        if "tracking" in s:
+           fullDepthDims.append(s.split("dim")[1].split("varGroup")[0])
+        else:
+           fullDepthDims.append(s.split("dim")[1].split("pointId")[0])
+
+
+    currentDisplay += """
+----------------------------------------------------------------
+| # smooth isolated solutions  | # of general linear equations |
+| found                        | added with variables in group |
+----------------------------------------------------------------
+                               | %s
+----------------------------------------------------------------
+"""%("  ".join([str(i) for i in range(len(variables))]))
+    currentMultidegreeBound = Counter(fullDepthDims)
+    for d in currentMultidegreeBound.keys():
+      dimension = d.split("_")[1:-1]
+      # if all([i=="0" for i in dimension]):
+      #     currentDisplay += \
+      #         "Found %d isolated smooth solutions\n"%currentMultidegreeBound[d]
+      # else:
+      currentDisplay += "  "\
+          + str(currentMultidegreeBound[d])\
+          + " "*(31-len(str(currentMultidegreeBound[d])))\
+          + "".join([str(i) + " "*(3-len(str(i))) for i in dimension])\
+          + "\n"
+
+    sys.stdout.write(currentDisplay)
+    sys.stdout.flush()
+    if not cursorLeftAtBotten:
+        sys.stdout.write("\033[F"*len(currentDisplay.splitlines()))
+        sys.stdout.flush()
+
+def updateProgressInfo():
+  while True:
+    updateProgressDisplay()
+    time.sleep(0.4)
+
+
 
 
 if __name__== "__main__":
