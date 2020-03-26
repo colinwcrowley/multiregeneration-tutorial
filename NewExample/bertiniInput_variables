@@ -1,8 +1,0 @@
-variable_group u, n, s, t;
-variable_group L1,L2;
-hom_variable_group x11, x12, x13;
-hom_variable_group x21, x22, x23, x24, x25, x26, x27;
-hom_variable_group x31, x32, x33, x34, x35, x36, x37, x38, x39;
-hom_variable_group x41, x42, x43, x44, x45, x46, x47, x48, x49, x410, x411, x412, x413, x414, x415;
-hom_variable_group x51, x52, x53, x54, x55, x56, x57, x58, x59, x510, x511, x512, x513, x514, x515, x516, x517;
-hom_variable_group x61, x62, x63, x64, x65, x66, x67, x68, x69, x610, x611, x612, x613, x614, x615, x616, x617, x618, x619, x620, x621, x622, x623;
