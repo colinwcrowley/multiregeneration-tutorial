@@ -17,6 +17,7 @@ joinWithCommas = L -> (
 R = CC[x,y,z]
 system = {x^2*y + y*z^2 + y*x + 2, y^2 + x^2 - z^2*y^2 + 1, x*y*z - 5}
 
+
 -- STEP 2: Choose variable groups.
 -- Here are some example variable groups. Variable group 0 is {x,z} and variable group 1 is {y}
 -- Recall that choosing different variable groups could speed up or slow down the computation.
@@ -70,8 +71,11 @@ functionNames = for i from 1 to length(system) list "f"|toString(i);
 
 -- Now we write a line defining each f0,f1,etc. to be the functions
 -- in our system.
+
+formattedSystem = for equation in system list replace("ii", "I", toString(equation))
+
 for i from 0 to length(system)-1 do
-    "bertiniInput_equations" << functionNames_i|" = "|toString(system_i)|";\n";
+    "bertiniInput_equations" << functionNames_i|" = "|formattedSystem_i|";\n";
 
 -- Close the file now that we are done
 "bertiniInput_equations" << close
@@ -125,6 +129,7 @@ pythonFormattedMultidegrees = replace("\\}", "]",pythonFormattedMultidegrees)
 -- Now that we've generated the input exit emacs or M2 and, run the command
 -- "python2 ../multiregeneration.py"
 -- from this directory.
+
 
 
 
