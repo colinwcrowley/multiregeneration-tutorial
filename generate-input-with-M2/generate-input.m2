@@ -11,6 +11,9 @@ joinWithCommas = L -> (
         output = insert(2*i-1, ",", output);
     concatenate(output)
     )
+    
+-- Print complex numbers to a higher precision
+printingPrecision = 64
 
 -- STEP 1: Run whatever code you need to to get the system you want.
 -- Here's an example system you might like to solve 
@@ -123,6 +126,14 @@ pythonFormattedMultidegrees = replace("\\}", "]",pythonFormattedMultidegrees)
 "inputFile.py" << "explorationOrder = \"depthFirst\"" << endl
 
 "inputFile.py" << close
+
+-- STEP 6: Tracking Options
+-- The following code creates a single file called "bertiniInput_trackingOptions" which will
+-- contain the single line "SECURITYLEVEL:1;"
+-- This ensures that the numerical results are more acurate (i.e. that we find all solutions)
+-- at the price of taking slightly longer
+removeFile "bertiniInput_trackingOptions"
+"bertiniInput_trackingOptions" << "SECURITYLEVEL:1;" << endl << close
 	
 -- STEP 6: Running multiregeneration
 
