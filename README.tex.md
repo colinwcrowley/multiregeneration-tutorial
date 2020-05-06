@@ -1,10 +1,9 @@
----
-abstract: |
-  We introduce the multiregeneration software through the lens of
-  solving polynomial systems and numerical algebraic geometry.
-bibliography: tutorial.bib
-title:  Multiregeneration Tutorial
----
+Multiregeneration Tutorial
+==========================
+
+This is a tutorial on how to use [this 
+software](https://github.com/JoseMath/multiregeneration), intended for 
+anyone who is interested in using it to solve polynomial systems.
 
 Getting Started
 ===============
