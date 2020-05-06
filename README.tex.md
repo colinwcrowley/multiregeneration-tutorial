@@ -2,8 +2,7 @@
 abstract: |
   We introduce the multiregeneration software through the lens of
   solving polynomial systems and numerical algebraic geometry.
-bibliography:
-- tutorial.bib
+bibliography: tutorial.bib
 title:  Multiregeneration Tutorial
 ---
 
