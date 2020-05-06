@@ -3,7 +3,10 @@ Multiregeneration Tutorial
 
 This is a tutorial on how to use [this 
 software](https://github.com/JoseMath/multiregeneration), intended for 
-anyone who is interested in using it to solve polynomial systems.
+anyone who is interested in using it to solve polynomial systems. To use 
+the software, you 
+need [bertini](https://bertini.nd.edu/) and 
+[python2](https://www.python.org/) installed.
 
 Getting Started
 ===============
