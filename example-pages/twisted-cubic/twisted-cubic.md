@@ -11,7 +11,7 @@ intersections using the classical example of the twisted cubic.
 
 ### Defining equations
 The twisted cubic is the image of the map $$\mathbb{P}^1 \to 
-\mathbb{P}^3$$ given by $$[t_0,t_1] \mapsto [t_0^3, t_0^2t_1, t_0t_1^2, 
+\mathbb{P}^3$$ given by $$[t_0:t_1] \mapsto [t_0^3: t_0^2t_1: t_0t_1^2: 
 t_1^3].$$
 
 The image is implicitly given as the set of points $[x_0:x_1:x_2:x_3] 
