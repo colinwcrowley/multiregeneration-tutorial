@@ -4,7 +4,7 @@ pre, code, pre code {
   max-height: 400px;
 }
 </style>
-## Regenerating [the name of this example]
+## Regenerating in $\mathbb{P}^3 \times \mathbb{P}^1$
 
 <!-- We will demonstrate how multiregeneration.py handles noncomplete --> 
 <!-- intersections using the classical example of the twisted cubic. -->
