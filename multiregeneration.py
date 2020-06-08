@@ -141,6 +141,9 @@ loadDimensionLinearsAndStartSolution = False
 # the variable 'r' is set by the user
 loadDegreeLinears = False
 
+# User inputs location of bertini executible
+pathToBertini = None
+
 def pruneByDimension(bfePrime):
     return(False)
 
@@ -218,6 +221,8 @@ def main():
     # variable
     global algebraicTorusVariableGroups
 
+    global nonzeroCoordinate
+
     global bertiniVariableGroupString
 
 
@@ -236,6 +241,7 @@ def main():
     global loadDegreeLinears
     global pruneByDimension
     global pruneByPoint
+    global pathToBertini
 
     # We read in the users configuration by evaluating the following 
     # string appended with the file 'inputFile.py'. 
@@ -255,6 +261,7 @@ global logTolerance
 global verbose
 global projectiveVariableGroups
 global algebraicTorusVariableGroups
+global nonzeroCoordinates
 global maxProcesses
 global targetDimensions
 global explorationOrder
@@ -262,6 +269,7 @@ global loadDimensionLinearsAndStartSolution
 global loadDegreeLinears
 global pruneByDimension
 global pruneByPoint
+global pathToBertini
 """
     # Read in the user's input frim the files 'bertiniInput_*'
     try:
@@ -588,10 +596,11 @@ def outlineRegenerate(depth,G,B,bfe,P):
                             for i in range(len(variables)):
                                 for j in range(len(variables[i])):
                                     if (count in nonzeroCoordinates):
-                                        if coordinateLineIsZero(PPrime[count], logTolerance): # What should the logTolerance be here?
+                                        if coordinateLineIsZero(PPrime[count], logTolerance):
                                             label="prune"
                                     count = count +1;
 
+                        count = 0
                         # Proceed if the endpoing is smooth and nonempty
                         if label=="smooth" and len(PPrime)>1:
                             completedSmoothSolutions = "_completed_smooth_solutions"
@@ -706,7 +715,10 @@ END;
     os.chdir(dirVanish)
     # print("Try bertini inputEval..")
     try:
-        bertiniCommand = "bertini inputEval"
+        if pathToBertini is not None:
+            bertiniCommand = pathToBertini + " inputEval"
+        else:
+            bertiniCommand = "bertini inputEval"
         process = subprocess.Popen(bertiniCommand.split(), stdout=subprocess.PIPE)
         output, error = process.communicate()
         # print("..success likely")
@@ -861,7 +873,10 @@ def branchHomotopy(dirTracking,depth, G, bfePrime,bfe, vg, rg, M, P):
     while not(errorCountPQ>1 or (successPQ==True)): # We give Bertini one chance to find Q.
         label="unknown"
         try:
-            bertiniCommand = "bertini inputPQ"
+            if pathToBertini is not None:
+                bertiniCommand = pathToBertini + " inputPQ"
+            else:
+                bertiniCommand = "bertini inputPQ"
             process = subprocess.Popen(bertiniCommand.split(), stdout=subprocess.PIPE)
             output, error = process.communicate()
         except:
@@ -906,7 +921,10 @@ def branchHomotopy(dirTracking,depth, G, bfePrime,bfe, vg, rg, M, P):
         inputQP.write(inputTextQP)
         inputQP.close()
         try:
-            bertiniCommand = "bertini inputQP"
+            if pathToBertini is not None:
+                bertiniCommand = pathToBertini + " inputQP"
+            else:
+                bertiniCommand = "bertini inputQP"
             process = subprocess.Popen(bertiniCommand.split(), stdout=subprocess.PIPE)
             output, errors = process.communicate()
         except:
