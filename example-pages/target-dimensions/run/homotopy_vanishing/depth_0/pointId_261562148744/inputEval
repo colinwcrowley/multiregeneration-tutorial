@@ -1,0 +1,18 @@
+
+CONFIG
+  
+  TrackType:-4;
+END;
+INPUT
+  variable_group x;
+variable_group y;
+variable_group z;
+
+  function evalF;
+  
+f1 = (x^2+y+z)*x;
+f2 = (x-2*y^2+1)*x;
+
+  evalF = f1;
+END;
+      
