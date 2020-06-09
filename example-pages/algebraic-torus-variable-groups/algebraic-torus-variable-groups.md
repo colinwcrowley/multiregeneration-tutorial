@@ -106,7 +106,7 @@ exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
-ROGRESS
+PROGRESS
 Depth 0: 1
 
 ----------------------------------------------------------------
