@@ -9,7 +9,9 @@ pre, code, pre code {
 It is often the case that the solution set to a system of polynomials 
 contains many irreducible components, only some of which are of 
 interest. We will demonstrate how to saturate out unwanted components 
-using the user defined method `pruneByPoint`.
+using the user defined method `pruneByPoint`. We view regeneration as 
+analogous to exploring a tree (or a graph), and so we call this method 
+`pruneByPoint` because it "prunes" a branch of the search tree.
 
 ### Defining equations
 
