@@ -33,17 +33,12 @@ There are four files that comprise the input to multiregeneration.py
 ```python
 degrees = [[3]]
 verbose = 1
-def pruneByPoint(bfePrime, i, PPi):
-    # The complex coordinates (in variable group 0) of the point PPi
-    coordinates = \
-        [complex(s.replace(" -","-").replace(" ", "+") +"j") for \
-        s in PPi[0]]
-
-    # If either x-y is satisfied to within a 
+def pruneByPoint(coordinates):
+    # If x-y is satisfied to within a 
     # tolerance of 1e-16, then the point will lie on the 'extra' 
     # component, and should be pruned.
 
-    if abs(coordinates[0] - coordinates[1]) < 1e-16:
+    if abs(coordinates[0] - coordinates[1]) < 1e-10:
       return True
     else:
       return False
@@ -53,23 +48,13 @@ as additional options. The command `verbose=1` tells
 multiregeneration.py to display a progress update.
 
 The method prune by point is define by the user. It returns `True` if 
-the given point lies on an unwanted component, and false otherwise. The 
-three arguments are
+the given point lies on an unwanted component, and `False` otherwise. The 
+argument `coordinates` is a list of complex numbers representing the 
+coordinates of a point. (The coordinates are not separated into variable 
+groups.)
 
- - `PPi`, which is a 2D list of strings containing the complex 
-  coordinates of the point. The entry $PPi[i][j]$ is a string 
-  representing a complex number (e.g. "1.00e-3 3.4e5" represents $0.001 + 34000i$)
-  which is the value of the $j$th coordinate in the $i$th variable group.
-
- - `bfePrime`, which is the multidimension of the irreducible component 
-  containing the point at the current stage of regeneration.
-
- - `i`, which is the variable group to which a random linear equation 
-   was last added.
-
-In this example, all that is relevant are the coordinates of the point, 
-which are parsed to complex numbers in python, and on which the function 
-$x-y$ is evaluated.
+In this example, a point is ignored if it satisfies $x-y$ to within a 
+tolerance of $10^{-10}$.
 
 #### bertiniInput_variables
 ```c
@@ -109,22 +94,22 @@ Solutions in a 'linearProduct' directory and :
 depth >= 0 satisfy f = 0
 
 Using start solution
--0.6870240286673379 0.6660089339732769
--0.8656065344958435 -0.04970243975978783
-0.8300605198699051 0.9500829864796849
+0.6120927213859351 -0.5869637910452865
+-0.8607246497708636 0.7096709843505142
+-0.8272084557126054 -0.46936867801462934
 
 Using dimension linears
 l[0][0]
-(0.17459767167841567+I*-0.8295059700422907)*(x-(-0.6870240286673379+I*0.6660089339732769))+(0.49802620597619995+I*0.5953150510350627)*(y-(-0.8656065344958435+I*-0.04970243975978783))+(0.6719050118710679+I*-0.01415964309729012)*(z-(0.8300605198699051+I*0.9500829864796849))
+(-0.6471602502919691+I*0.5071045647768186)*(x-(0.6120927213859351+I*-0.5869637910452865))+(-0.5309534275405237+I*-0.50087033304964)*(y-(-0.8607246497708636+I*0.7096709843505142))+(0.3772646021684918+I*0.5828629037947555)*(z-(-0.8272084557126054+I*-0.46936867801462934))
 l[0][1]
-(-0.7789199551464714+I*-0.1436513073995127)*(x-(-0.6870240286673379+I*0.6660089339732769))+(0.9669114635688347+I*0.7602874671856612)*(y-(-0.8656065344958435+I*-0.04970243975978783))+(0.7625539604279046+I*-0.1581665949222475)*(z-(0.8300605198699051+I*0.9500829864796849))
+(0.6553319428867708+I*0.6649334627775159)*(x-(0.6120927213859351+I*-0.5869637910452865))+(0.727212309938718+I*-0.01974778671869748)*(y-(-0.8607246497708636+I*0.7096709843505142))+(0.9907994282664152+I*-0.15000758825564686)*(z-(-0.8272084557126054+I*-0.46936867801462934))
 l[0][2]
-(-0.49171259759195785+I*-0.005702711338215538)*(x-(-0.6870240286673379+I*0.6660089339732769))+(0.36537981588513757+I*-0.8213649606027058)*(y-(-0.8656065344958435+I*-0.04970243975978783))+(-0.6943393378141078+I*0.4532239418536499)*(z-(0.8300605198699051+I*0.9500829864796849))
+(0.7675992402950649+I*-0.9523561146406823)*(x-(0.6120927213859351+I*-0.5869637910452865))+(-0.812106499408902+I*-0.15019996401193203)*(y-(-0.8607246497708636+I*0.7096709843505142))+(-0.4762638471788807+I*0.6362395115493127)*(z-(-0.8272084557126054+I*-0.46936867801462934))
 
 Using degree linears
-(-0.001269658622827352 + I*0.6468715454215546)*x+(0.8803194362352371 + I*0.8712616352555678)*y+(-0.7470207140430898 + I*-0.7445285994358717)*z+(0.7286071812018424 + I*-0.7789590793502306)
-(-0.7118445654072061 + I*0.4862315492708391)*x+(-0.3433568322469507 + I*-0.8856323632769099)*y+(0.31196682077961335 + I*-0.3092364275492774)*z+(0.21875481473839198 + I*0.2603257572184263)
-(-0.30200880010613895 + I*-0.9728541042075887)*x+(0.7560001567462522 + I*-0.556949347142659)*y+(-0.4628891090325806 + I*-0.1274893752170574)*z+(-0.0997004595581017 + I*0.6094895559538585)
+(0.7484343864286713 + I*0.20560733080317384)*x+(0.05786272496663569 + I*-0.7297141882194789)*y+(-0.5264264093202347 + I*0.5004725272934674)*z+(-0.09996080108868188 + I*-0.4977578334107029)
+(-0.6136894131874964 + I*0.3922392934058119)*x+(-0.3627223102823678 + I*-0.26351112776642216)*y+(-0.8867477648805304 + I*-0.46531779773254645)*z+(0.25293373596067803 + I*0.482756340542549)
+(0.9593195816133797 + I*0.15079789618455264)*x+(0.41571519810905455 + I*-0.34399114180762447)*y+(0.5322858829208867 + I*0.918933498830794)*z+(-0.9519440019221193 + I*0.5761361010052006)
 exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
@@ -150,8 +135,8 @@ organized in the folder `run/_completed_smooth_solutions`.
 $ tree run/_completed_smooth_solutions/
 run/_completed_smooth_solutions/
 └── depth_0
-    ├── solution_tracking_depth_0_gens_1_dim_2_varGroup_0_regenLinear_2_pointId_2121420710_300754649198
-    └── solution_tracking_depth_0_gens_1_dim_2_varGroup_0_regenLinear_2_pointId_2121420710_931696304632
+    ├── solution_tracking_depth_0_gens_1_dim_2_varGroup_0_regenLinear_2_pointId_164244926985_420259138669
+    └── solution_tracking_depth_0_gens_1_dim_2_varGroup_0_regenLinear_2_pointId_164244926985_467325455839
 
 1 directory, 2 files
 ```
@@ -160,17 +145,17 @@ The folder `depth_0` contains the two point on intersection of
 $x^2+y^2+z^2 = 0$ and the 
 linear equation `l[0][0]`, which is given by
 ```
-(0.17459767167841567+I*-0.8295059700422907)*(x-(-0.6870240286673379+I*0.6660089339732769))+(0.49802620597619995+I*0.5953150510350627)*(y-(-0.8656065344958435+I*-0.04970243975978783))+(0.6719050118710679+I*-0.01415964309729012)*(z-(0.8300605198699051+I*0.9500829864796849))
+(-0.6471602502919691+I*0.5071045647768186)*(x-(0.6120927213859351+I*-0.5869637910452865))+(-0.5309534275405237+I*-0.50087033304964)*(y-(-0.8607246497708636+I*0.7096709843505142))+(0.3772646021684918+I*0.5828629037947555)*(z-(-0.8272084557126054+I*-0.46936867801462934))
 ```
 The two points are the following.
 ```bash 
 $ cat run/_completed_smooth_solutions/depth_0/*
 
--6.654356663954833e-01 7.283916116067314e-01
--6.378868198955263e-01 -8.874949007619301e-02
-5.475975875118920e-01 7.817522159281911e-01
+1.118119938371418e+00 1.000657557857476e+00
+-1.346697422340464e+00 3.867478121940165e-01
+4.142097786351300e-01 -1.443768148389819e+00
 
--6.436718425042774e-01 1.151147494868021e+00
-8.344454815171402e-01 7.671024151343057e-02
--8.922269185184641e-01 -7.587203440611088e-01
+-7.993693379292369e-01 -5.015364124123406e-01
+-4.938099911246115e-01 3.771925837430750e-01
+-2.843431885126573e-01 7.549024283993541e-01
 ```

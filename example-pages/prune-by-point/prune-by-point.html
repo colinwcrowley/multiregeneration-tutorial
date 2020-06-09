@@ -100,28 +100,18 @@ pre, code, pre code {
 <h4 id="inputfile.py">inputFile.py</h4>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>degrees <span class="op">=</span> [[<span class="dv">3</span>]]</span>
 <span id="cb1-2"><a href="#cb1-2"></a>verbose <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">def</span> pruneByPoint(bfePrime, i, PPi):</span>
-<span id="cb1-4"><a href="#cb1-4"></a>    <span class="co"># The complex coordinates (in variable group 0) of the point PPi</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>    coordinates <span class="op">=</span> <span class="op">\</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>        [<span class="bu">complex</span>(s.replace(<span class="st">&quot; -&quot;</span>,<span class="st">&quot;-&quot;</span>).replace(<span class="st">&quot; &quot;</span>, <span class="st">&quot;+&quot;</span>) <span class="op">+</span><span class="st">&quot;j&quot;</span>) <span class="cf">for</span> <span class="op">\</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>        s <span class="kw">in</span> PPi[<span class="dv">0</span>]]</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a>    <span class="co"># If either x-y is satisfied to within a </span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>    <span class="co"># tolerance of 1e-16, then the point will lie on the &#39;extra&#39; </span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>    <span class="co"># component, and should be pruned.</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a></span>
-<span id="cb1-13"><a href="#cb1-13"></a>    <span class="cf">if</span> <span class="bu">abs</span>(coordinates[<span class="dv">0</span>] <span class="op">-</span> coordinates[<span class="dv">1</span>]) <span class="op">&lt;</span> <span class="fl">1e-16</span>:</span>
-<span id="cb1-14"><a href="#cb1-14"></a>      <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-16"><a href="#cb1-16"></a>      <span class="cf">return</span> <span class="va">False</span></span></code></pre></div>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">def</span> pruneByPoint(coordinates):</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="co"># If x-y is satisfied to within a </span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="co"># tolerance of 1e-16, then the point will lie on the &#39;extra&#39; </span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="co"># component, and should be pruned.</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="cf">if</span> <span class="bu">abs</span>(coordinates[<span class="dv">0</span>] <span class="op">-</span> coordinates[<span class="dv">1</span>]) <span class="op">&lt;</span> <span class="fl">1e-10</span>:</span>
+<span id="cb1-9"><a href="#cb1-9"></a>      <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-11"><a href="#cb1-11"></a>      <span class="cf">return</span> <span class="va">False</span></span></code></pre></div>
 <p>This file contains the multidegrees of the defining equations, as well as additional options. The command <code>verbose=1</code> tells multiregeneration.py to display a progress update.</p>
-<p>The method prune by point is define by the user. It returns <code>True</code> if the given point lies on an unwanted component, and false otherwise. The three arguments are</p>
-<ul>
-<li><p><code>PPi</code>, which is a 2D list of strings containing the complex coordinates of the point. The entry <span class="math inline">\(PPi[i][j]\)</span> is a string representing a complex number (e.g. “1.00e-3 3.4e5” represents <span class="math inline">\(0.001 + 34000i\)</span>) which is the value of the <span class="math inline">\(j\)</span>th coordinate in the <span class="math inline">\(i\)</span>th variable group.</p></li>
-<li><p><code>bfePrime</code>, which is the multidimension of the irreducible component containing the point at the current stage of regeneration.</p></li>
-<li><p><code>i</code>, which is the variable group to which a random linear equation was last added.</p></li>
-</ul>
-<p>In this example, all that is relevant are the coordinates of the point, which are parsed to complex numbers in python, and on which the function <span class="math inline">\(x-y\)</span> is evaluated.</p>
+<p>The method prune by point is define by the user. It returns <code>True</code> if the given point lies on an unwanted component, and <code>False</code> otherwise. The argument <code>coordinates</code> is a list of complex numbers representing the coordinates of a point. (The coordinates are not separated into variable groups.)</p>
+<p>In this example, a point is ignored if it satisfies <span class="math inline">\(x-y\)</span> to within a tolerance of <span class="math inline">\(10^{-10}\)</span>.</p>
 <h4 id="bertiniinput_variables">bertiniInput_variables</h4>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1"></a>variable_group x,y,z;</span></code></pre></div>
 <h4 id="bertiniinput_equations">bertiniInput_equations</h4>
@@ -146,22 +136,22 @@ Solutions in a &#39;linearProduct&#39; directory and :
 depth &gt;= 0 satisfy f = 0
 
 Using start solution
--0.6870240286673379 0.6660089339732769
--0.8656065344958435 -0.04970243975978783
-0.8300605198699051 0.9500829864796849
+0.6120927213859351 -0.5869637910452865
+-0.8607246497708636 0.7096709843505142
+-0.8272084557126054 -0.46936867801462934
 
 Using dimension linears
 l[0][0]
-(0.17459767167841567+I*-0.8295059700422907)*(x-(-0.6870240286673379+I*0.6660089339732769))+(0.49802620597619995+I*0.5953150510350627)*(y-(-0.8656065344958435+I*-0.04970243975978783))+(0.6719050118710679+I*-0.01415964309729012)*(z-(0.8300605198699051+I*0.9500829864796849))
+(-0.6471602502919691+I*0.5071045647768186)*(x-(0.6120927213859351+I*-0.5869637910452865))+(-0.5309534275405237+I*-0.50087033304964)*(y-(-0.8607246497708636+I*0.7096709843505142))+(0.3772646021684918+I*0.5828629037947555)*(z-(-0.8272084557126054+I*-0.46936867801462934))
 l[0][1]
-(-0.7789199551464714+I*-0.1436513073995127)*(x-(-0.6870240286673379+I*0.6660089339732769))+(0.9669114635688347+I*0.7602874671856612)*(y-(-0.8656065344958435+I*-0.04970243975978783))+(0.7625539604279046+I*-0.1581665949222475)*(z-(0.8300605198699051+I*0.9500829864796849))
+(0.6553319428867708+I*0.6649334627775159)*(x-(0.6120927213859351+I*-0.5869637910452865))+(0.727212309938718+I*-0.01974778671869748)*(y-(-0.8607246497708636+I*0.7096709843505142))+(0.9907994282664152+I*-0.15000758825564686)*(z-(-0.8272084557126054+I*-0.46936867801462934))
 l[0][2]
-(-0.49171259759195785+I*-0.005702711338215538)*(x-(-0.6870240286673379+I*0.6660089339732769))+(0.36537981588513757+I*-0.8213649606027058)*(y-(-0.8656065344958435+I*-0.04970243975978783))+(-0.6943393378141078+I*0.4532239418536499)*(z-(0.8300605198699051+I*0.9500829864796849))
+(0.7675992402950649+I*-0.9523561146406823)*(x-(0.6120927213859351+I*-0.5869637910452865))+(-0.812106499408902+I*-0.15019996401193203)*(y-(-0.8607246497708636+I*0.7096709843505142))+(-0.4762638471788807+I*0.6362395115493127)*(z-(-0.8272084557126054+I*-0.46936867801462934))
 
 Using degree linears
-(-0.001269658622827352 + I*0.6468715454215546)*x+(0.8803194362352371 + I*0.8712616352555678)*y+(-0.7470207140430898 + I*-0.7445285994358717)*z+(0.7286071812018424 + I*-0.7789590793502306)
-(-0.7118445654072061 + I*0.4862315492708391)*x+(-0.3433568322469507 + I*-0.8856323632769099)*y+(0.31196682077961335 + I*-0.3092364275492774)*z+(0.21875481473839198 + I*0.2603257572184263)
-(-0.30200880010613895 + I*-0.9728541042075887)*x+(0.7560001567462522 + I*-0.556949347142659)*y+(-0.4628891090325806 + I*-0.1274893752170574)*z+(-0.0997004595581017 + I*0.6094895559538585)
+(0.7484343864286713 + I*0.20560733080317384)*x+(0.05786272496663569 + I*-0.7297141882194789)*y+(-0.5264264093202347 + I*0.5004725272934674)*z+(-0.09996080108868188 + I*-0.4977578334107029)
+(-0.6136894131874964 + I*0.3922392934058119)*x+(-0.3627223102823678 + I*-0.26351112776642216)*y+(-0.8867477648805304 + I*-0.46531779773254645)*z+(0.25293373596067803 + I*0.482756340542549)
+(0.9593195816133797 + I*0.15079789618455264)*x+(0.41571519810905455 + I*-0.34399114180762447)*y+(0.5322858829208867 + I*0.918933498830794)*z+(-0.9519440019221193 + I*0.5761361010052006)
 exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
@@ -182,21 +172,21 @@ Done.</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a>$ <span class="ex">tree</span> run/_completed_smooth_solutions/</span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="ex">run/_completed_smooth_solutions/</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a>└── <span class="ex">depth_0</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>    ├── <span class="ex">solution_tracking_depth_0_gens_1_dim_2_varGroup_0_regenLinear_2_pointId_2121420710_300754649198</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>    └── <span class="ex">solution_tracking_depth_0_gens_1_dim_2_varGroup_0_regenLinear_2_pointId_2121420710_931696304632</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>    ├── <span class="ex">solution_tracking_depth_0_gens_1_dim_2_varGroup_0_regenLinear_2_pointId_164244926985_420259138669</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>    └── <span class="ex">solution_tracking_depth_0_gens_1_dim_2_varGroup_0_regenLinear_2_pointId_164244926985_467325455839</span></span>
 <span id="cb8-6"><a href="#cb8-6"></a></span>
 <span id="cb8-7"><a href="#cb8-7"></a><span class="ex">1</span> directory, 2 files</span></code></pre></div>
 <p>The folder <code>depth_0</code> contains the two point on intersection of <span class="math inline">\(x^2+y^2+z^2 = 0\)</span> and the linear equation <code>l[0][0]</code>, which is given by</p>
-<pre><code>(0.17459767167841567+I*-0.8295059700422907)*(x-(-0.6870240286673379+I*0.6660089339732769))+(0.49802620597619995+I*0.5953150510350627)*(y-(-0.8656065344958435+I*-0.04970243975978783))+(0.6719050118710679+I*-0.01415964309729012)*(z-(0.8300605198699051+I*0.9500829864796849))</code></pre>
+<pre><code>(-0.6471602502919691+I*0.5071045647768186)*(x-(0.6120927213859351+I*-0.5869637910452865))+(-0.5309534275405237+I*-0.50087033304964)*(y-(-0.8607246497708636+I*0.7096709843505142))+(0.3772646021684918+I*0.5828629037947555)*(z-(-0.8272084557126054+I*-0.46936867801462934))</code></pre>
 <p>The two points are the following.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a>$ <span class="fu">cat</span> run/_completed_smooth_solutions/depth_0/*</span>
 <span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="ex">-6.654356663954833e-01</span> 7.283916116067314e-01</span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="ex">-6.378868198955263e-01</span> -8.874949007619301e-02</span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="ex">5.475975875118920e-01</span> 7.817522159281911e-01</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="ex">1.118119938371418e+00</span> 1.000657557857476e+00</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="ex">-1.346697422340464e+00</span> 3.867478121940165e-01</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="ex">4.142097786351300e-01</span> -1.443768148389819e+00</span>
 <span id="cb10-6"><a href="#cb10-6"></a></span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="ex">-6.436718425042774e-01</span> 1.151147494868021e+00</span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="ex">8.344454815171402e-01</span> 7.671024151343057e-02</span>
-<span id="cb10-9"><a href="#cb10-9"></a><span class="ex">-8.922269185184641e-01</span> -7.587203440611088e-01</span></code></pre></div>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="ex">-7.993693379292369e-01</span> -5.015364124123406e-01</span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="ex">-4.938099911246115e-01</span> 3.771925837430750e-01</span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="ex">-2.843431885126573e-01</span> 7.549024283993541e-01</span></code></pre></div>
 </body>
 </html>
