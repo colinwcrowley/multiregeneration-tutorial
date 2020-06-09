@@ -30,7 +30,10 @@ import multiprocessing as mp
 from multiprocessing.sharedctypes import Value
 
 #For managing the order in which edges are explored
-from queue import PriorityQueue
+if sys.version_info >= (3,0):
+    from queue import PriorityQueue
+else:
+    from Queue import PriorityQueue
 
 
 ### Configuration ###
@@ -458,14 +461,14 @@ global pathToBertini
     # then puts them in the priority queue. When there is space for more
     # jobs, explore nodes in the priority queue.
     while True:
-        if priorityQueue.empty() and queue.empty() and jobsInPool.value is 0:
+        if priorityQueue.empty() and queue.empty() and jobsInPool.value == 0:
             break
         if not queue.empty():
             job = queue.get()
-            if explorationOrder is "breadthFirst":
+            if explorationOrder == "breadthFirst":
                 priority = job[0]
                 priorityQueue.put((priority,job)) #depth is first in tuple, will process lower depth jobs first
-            elif explorationOrder is "depthFirst":
+            elif explorationOrder == "depthFirst":
                 priority = -1*job[0]
                 priorityQueue.put((priority,job))
             else:
@@ -549,7 +552,7 @@ def outlineRegenerate(depth,G,B,bfe,P):
             for i in range(len(bfe)):
                 bfePrime = list(bfe)
                 bfePrime[i] = bfe[i]-1
-                prune = bfe[i] is 0
+                prune = bfe[i] == 0
                 if targetDimensions:
                     canReach = []
                     for dim in targetDimensions:
