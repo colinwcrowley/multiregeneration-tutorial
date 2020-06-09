@@ -6,7 +6,7 @@ software](https://github.com/JoseMath/multiregeneration), intended for
 anyone who is interested in using it to solve polynomial systems. To use 
 the software, you 
 need [bertini](https://bertini.nd.edu/) and 
-[python2](https://www.python.org/) installed.
+[python](https://www.python.org/) version 2 or 3 installed.
 
 Getting Started
 ===============
@@ -65,12 +65,12 @@ variable is not allowed. To specify the value of a constant, say <img src="/tex/
 Solving
 -------
 
-To solve the system, we use python2 to run the "multiregeneration.py"
+To solve the system, we use python to run the "multiregeneration.py"
 script *from the "getting-started" folder*. The multiregeneration script
 will look for input files in the directory from which it is run, so make
 sure that you are in the directory with the system you wish to solve.
 
-    python2 ../multiregeneration.py
+    python ../multiregeneration.py
 
 If all goes well there will be a new directory called "run". If there
 was an error, then the most likely cause is that there was an error in
@@ -188,7 +188,7 @@ multidegrees <img src="/tex/8b0b8d1d2c1311608d3199b51ab43a5c.svg?invert_in_darkm
 
 As before we run
 
-    python2 ../multiregeneration.py
+    python ../multiregeneration.py
 
 and look for the solution files in
 
@@ -233,7 +233,7 @@ and (2) we have declared a "hom\_variable\_group".
 
 After running the program
 
-    python2 ../multiregeneration.py
+    python ../multiregeneration.py
 
 the output in
 
