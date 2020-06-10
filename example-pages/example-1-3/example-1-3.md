@@ -6,6 +6,8 @@ pre, code, pre code {
 </style>
 ## Regenerating in $\mathbb{P}^3 \times \mathbb{P}^1$
 
+#### Authors: [Colin Crowley](https://sites.google.com/view/colincrowley/home), and [Jose Israel Rodriguez](https://www.math.wisc.edu/~jose/)
+
 <!-- We will demonstrate how multiregeneration.py handles noncomplete --> 
 <!-- intersections using the classical example of the twisted cubic. -->
 

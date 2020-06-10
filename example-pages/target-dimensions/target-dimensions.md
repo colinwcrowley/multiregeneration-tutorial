@@ -6,6 +6,8 @@ pre, code, pre code {
 </style>
 ## Use of `targetDimensions`
 
+#### Authors: [Colin Crowley](https://sites.google.com/view/colincrowley/home), and [Jose Israel Rodriguez](https://www.math.wisc.edu/~jose/)
+
 Here we demonstrate how to use the user defined variable 
 `targetDimensions`. This can be used when we have equations defining a 
 variety, but we only care about its multidegree coefficients for certain 

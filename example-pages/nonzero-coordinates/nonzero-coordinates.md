@@ -6,6 +6,8 @@ pre, code, pre code {
 </style>
 ## Use of `nonzeroCoordinates`
 
+#### Authors: [Colin Crowley](https://sites.google.com/view/colincrowley/home), and [Jose Israel Rodriguez](https://www.math.wisc.edu/~jose/)
+
 Here we demonstrate how to use the user defined variable 
 `nonzeroCoordinates`. If, in the relevant application, solutions with 
 zeros in certain coordinates should be ignored, the user may specify 

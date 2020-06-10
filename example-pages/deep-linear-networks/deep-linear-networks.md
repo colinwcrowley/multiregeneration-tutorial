@@ -5,6 +5,9 @@ pre, code, pre code {
 }
 </style>
 ## Deep Linear Networks
+
+#### Authors: [Colin Crowley](https://sites.google.com/view/colincrowley/home), and [Jose Israel Rodriguez](https://www.math.wisc.edu/~jose/), Jacob Weiker, and Jacob Zoromski
+
 One approach to gain a better theoretical understanding of deep neural networks is
 by characterizing the loss surface and regularizers. 
 In particular,  one might want to know how many of the local optimum are global optimum with a regularization.
