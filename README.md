@@ -12,9 +12,7 @@ Example Pages
 =============
 Here are several pages which demonstrate features and applications.
 
- - [An example of computing a witness set in $\mathbb{P}^2 \times \mathbb{P}^2$.](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/HR-example-4-12/HR-example-4-12.html)
-
- - [An example of computing a witness set in $\mathbb{P}^3 \times \mathbb{P}^1$](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/example-1-3/example-1-3.html)
+ - Examples of computing witness sets: [here](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/HR-example-4-12/HR-example-4-12.html) and also [here](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/example-1-3/example-1-3.html).
    
  - [A witness set for a noncomplete intersection](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/twisted-cubic/twisted-cubic.html)
 
