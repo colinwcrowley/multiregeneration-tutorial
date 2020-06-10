@@ -3,10 +3,30 @@ Multiregeneration Tutorial
 
 This is a tutorial on how to use [this 
 software](https://github.com/JoseMath/multiregeneration), intended for 
-anyone who is interested in using it to solve polynomial systems. To use 
+undergraduates who are interested in using it to solve polynomial systems. To use 
 the software, you 
 need [bertini](https://bertini.nd.edu/) and 
 [python](https://www.python.org/) version 2 or 3 installed.
+
+Example Pages
+=============
+Here are several pages which demonstrate features and applications.
+
+ - [An example of computing a witness set in $\mathbb{P}^2 \times \mathbb{P}^2$.](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/HR-example-4-12/HR-example-4-12.html)
+
+ - [An example of computing a witness set in $\mathbb{P}^3 \times \mathbb{P}^1$](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/example-1-3/example-1-3.html)
+   
+ - [A witness set for a noncomplete intersection](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/twisted-cubic/twisted-cubic.html)
+
+ - Excluding solutions with zero coordinates: [here](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/nonzero-coordinates/nonzero-coordinates.html) and also [here.](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/algebraic-torus-variable-groups/algebraic-torus-variable-groups.html)
+ 
+ - [Satruating by an equation](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/prune-by-point/prune-by-point.html)
+ 
+ - [Computing multidegree coefficients in only certain dimensions](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/target-dimensions/target-dimensions.html)
+
+ - [An application to deep linear networks](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/deep-linear-networks/deep-linear-networks.html)
+
+ - [Computing Nash equilibria](https://colinwcrowley.github.io/multiregeneration-tutorial/example-pages/nash-equilibria/nash-equilibria.html)
 
 Getting Started
 ===============
