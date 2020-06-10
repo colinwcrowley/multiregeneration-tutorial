@@ -77,7 +77,7 @@ SecurityLevel:1;
 
 ### Running multiregeneration.py
 
-Make sure that the four files discussed above are in your currnet 
+Make sure that the four files discussed above are in your current 
 directory
 ```bash
 $ ls
