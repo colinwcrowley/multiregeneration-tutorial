@@ -1,3 +1,6 @@
+<script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js">
+</script>
 <link rel="stylesheet" href="modest.css">
 <style>
 pre, code, pre code {
