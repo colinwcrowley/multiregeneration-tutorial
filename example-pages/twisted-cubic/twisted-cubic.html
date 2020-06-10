@@ -147,25 +147,7 @@ Solutions in a &#39;linearProduct&#39; directory and :
 depth &gt;= 0 satisfy f1 = 0
 depth &gt;= 1 satisfy f2 = 0
 depth &gt;= 2 satisfy f3 = 0
-
-Using start solution
-0.208465534309 0.838096322231
--0.237964947646 0.40102539944
-0.392192600852 -0.319508409516
-0.375533564086 0.643435017932
-
-Using dimension linears
-l[0][0]
-(0.720028495308+I*-0.851408408375)*((0.375533564086+I*0.643435017932)*x_0-(0.208465534309+I*0.838096322231)*x_3)+(0.48440294158+I*0.308951747675)*((0.375533564086+I*0.643435017932)*x_1-(-0.237964947646+I*0.40102539944)*x_3)+(-0.357313578768+I*0.495115632213)*((0.375533564086+I*0.643435017932)*x_2-(0.392192600852+I*-0.319508409516)*x_3)
-l[0][1]
-(-0.428538676915+I*0.0250937940779)*((0.375533564086+I*0.643435017932)*x_0-(0.208465534309+I*0.838096322231)*x_3)+(-0.610868370016+I*0.0271485946123)*((0.375533564086+I*0.643435017932)*x_1-(-0.237964947646+I*0.40102539944)*x_3)+(-0.95279658392+I*-0.253642041076)*((0.375533564086+I*0.643435017932)*x_2-(0.392192600852+I*-0.319508409516)*x_3)
-l[0][2]
-(0.929251263865+I*-0.00647030572172)*((0.375533564086+I*0.643435017932)*x_0-(0.208465534309+I*0.838096322231)*x_3)+(-0.96149927365+I*0.480429576293)*((0.375533564086+I*0.643435017932)*x_1-(-0.237964947646+I*0.40102539944)*x_3)+(-0.377714814048+I*0.164762291067)*((0.375533564086+I*0.643435017932)*x_2-(0.392192600852+I*-0.319508409516)*x_3)
-
-Using degree linears
-(-0.922909581578 + I*0.520281817425)*x_0+(-0.222559515157 + I*0.971260056134)*x_1+(0.441457019179 + I*0.421252304705)*x_2+(0.923740150129 + I*0.663831700427)*x_3
-(0.517698381776 + I*-0.735750317496)*x_0+(-0.921836097918 + I*0.0895617802129)*x_1+(-0.358866235243 + I*-0.145384839885)*x_2+(0.0579076672446 + I*0.747067964401)*x_3
-(&#39;exploring tree in order&#39;, &#39;depthFirst&#39;)
+exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
@@ -201,24 +183,22 @@ Done.</code></pre>
 <span id="cb9-15"><a href="#cb9-15"></a></span>
 <span id="cb9-16"><a href="#cb9-16"></a><span class="ex">3</span> directories, 9 files</span></code></pre></div>
 <p>The folder <code>depth_n</code> contains the data of a witness set collection for the system <span class="math inline">\(f_0, \ldots, f_{n-1}\)</span>. We see that a witness set for the variety <span class="math inline">\(f_1=f_2=0\)</span> consists of four point, which is expected since <span class="math inline">\(f_1 = f_2 = 0\)</span> describes a cubic curve together with a line. A witness set for the twisted cubic <span class="math inline">\(f_1 = f_2 = f_3 = 0\)</span> consists of one less point, since the extra line <span class="math inline">\(x_1 = x_2 = 0\)</span> is not included.</p>
-<p>Therefore a witness system for the twisted cubic is given by the equations <span class="math inline">\(f_1, f_2\)</span>, the linear equation <code>l[0][2]</code></p>
-<pre><code>(0.929251263865+I*-0.00647030572172)*((0.375533564086+I*0.643435017932)*x_0-(0.208465534309+I*0.838096322231)*x_3)+(-0.96149927365+I*0.480429576293)*((0.375533564086+I*0.643435017932)*x_1-(-0.237964947646+I*0.40102539944)*x_3)+(-0.377714814048+I*0.164762291067)*((0.375533564086+I*0.643435017932)*x_2-(0.392192600852+I*-0.319508409516)*x_3)</code></pre>
-<p>and the following points.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a>$ <span class="fu">cat</span> run/_completed_smooth_solutions/depth_2/*</span>
-<span id="cb11-2"><a href="#cb11-2"></a></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="ex">1.000000000000000e+00</span> 0.000000000000000e+00</span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="ex">8.655494693944729e-01</span> -3.179513979168430e-02</span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="ex">7.481649530546808e-01</span> -5.504053275203097e-02</span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="ex">6.458237567029602e-01</span> -7.142831318832180e-02</span>
-<span id="cb11-7"><a href="#cb11-7"></a></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="ex">1.000000000000000e+00</span> 0.000000000000000e+00</span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="ex">-2.883834575360769e-01</span> 8.488700931892024e-01</span>
-<span id="cb11-10"><a href="#cb11-10"></a><span class="ex">-6.374154165305825e-01</span> -4.896001849457478e-01</span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="ex">5.994270163262361e-01</span> -3.998902898855923e-01</span>
-<span id="cb11-12"><a href="#cb11-12"></a></span>
-<span id="cb11-13"><a href="#cb11-13"></a><span class="ex">1.127050539992347e-02</span> 9.992386941399086e-01</span>
-<span id="cb11-14"><a href="#cb11-14"></a><span class="ex">4.932446428984644e-01</span> -8.693557963587947e-01</span>
-<span id="cb11-15"><a href="#cb11-15"></a><span class="ex">-8.639384885191288e-01</span> 5.031352393206544e-01</span>
-<span id="cb11-16"><a href="#cb11-16"></a><span class="ex">1.000000000000000e+00</span> 0.000000000000000e+00</span></code></pre></div>
+<p>Therefore a witness system for the twisted cubic is given by the equations <span class="math inline">\(f_1, f_2\)</span>, the linear equation <code>l[0][2]</code> which can be found in <code>run/_tracking_information</code> and the following points.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a>$ <span class="fu">cat</span> run/_completed_smooth_solutions/depth_2/*</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="ex">1.000000000000000e+00</span> 0.000000000000000e+00</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="ex">8.655494693944729e-01</span> -3.179513979168430e-02</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="ex">7.481649530546808e-01</span> -5.504053275203097e-02</span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="ex">6.458237567029602e-01</span> -7.142831318832180e-02</span>
+<span id="cb10-7"><a href="#cb10-7"></a></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="ex">1.000000000000000e+00</span> 0.000000000000000e+00</span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="ex">-2.883834575360769e-01</span> 8.488700931892024e-01</span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="ex">-6.374154165305825e-01</span> -4.896001849457478e-01</span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="ex">5.994270163262361e-01</span> -3.998902898855923e-01</span>
+<span id="cb10-12"><a href="#cb10-12"></a></span>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="ex">1.127050539992347e-02</span> 9.992386941399086e-01</span>
+<span id="cb10-14"><a href="#cb10-14"></a><span class="ex">4.932446428984644e-01</span> -8.693557963587947e-01</span>
+<span id="cb10-15"><a href="#cb10-15"></a><span class="ex">-8.639384885191288e-01</span> 5.031352393206544e-01</span>
+<span id="cb10-16"><a href="#cb10-16"></a><span class="ex">1.000000000000000e+00</span> 0.000000000000000e+00</span></code></pre></div>
 </body>
 </html>

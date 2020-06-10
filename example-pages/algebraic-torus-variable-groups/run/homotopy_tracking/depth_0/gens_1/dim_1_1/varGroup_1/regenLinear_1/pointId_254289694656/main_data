@@ -1,0 +1,63 @@
+Number of variables: 3
+Variables:  x y z
+Rank: 3
+-------------------------
+Solution 0 (path number 0)
+Estimated condition number: 3.950041942071424e+00
+Function residual: 1.241267076623637e-16
+Latest Newton residual: 1.178630584900129e-16
+T value at final sample point: 9.765625000000001e-05
+Maximum precision utilized: 52
+T value of first precision increase: 0.000000000000000e+00
+Accuracy estimate, internal coordinates (difference of last two endpoint estimates):  2.363989141442495e-13
+Accuracy estimate, user's coordinates (after dehomogenization, if applicable):  7.667490068402290e-13
+Cycle number: 1
+-6.283573634649997e-01 -8.935676451415548e-01
+-4.058377258054173e-17 -6.003890361652986e-17
+-7.286905933382140e-01 1.160364810009650e+00
+Paths with the same endpoint, to the prescribed tolerance:  
+Multiplicity: 1
+-------------------------
+At tol=1.000000000000e-10, there appears to be a unique solution.
+
+
+*************** input file needed to reproduce this run ***************
+
+CONFIG
+
+ParameterHomotopy: 2;
+TrackTolBeforeEG: 1.000000000000e-08;
+TrackTolDuringEG: 1.000000000000e-11;
+CoeffBound: 2.381934000000e+00;
+DegreeBound: 3.000000000000e+00;
+RandomSeed: 1591802885;
+
+END;
+
+INPUT
+
+variable_group x;
+variable_group y,z;
+parameter Tpath;
+function HF;
+function l_0_0,l_1_0;
+f=x*y*z;
+l_0_0=(0.623433890583311+I*0.18914003288630044)*(x-(-0.6283573634649997+I*-0.8935676451415548));
+l_1_0=(0.42160636682271946+I*-0.7968625676354482)*(y-(-0.05105245368655931+I*-0.9852128869450973))+(0.716407939408652+I*0.6838939621044835)*(z-(0.12161198216705293+I*0.8716653840407231));
+l_1_1=(-0.021313020300648633+I*-0.21641712505907917)*(y-(-0.05105245368655931+I*-0.9852128869450973))+(-0.8528692128736346+I*-0.24151408442915034)*(z-(0.12161198216705293+I*0.8716653840407231));
+r_0_0=(0.6807358139338833+I*0.8460511520283573)*x+(0.08110331492381118+I*-0.9688563823189453);
+r_1_0=(0.7853890230425655+I*-0.5449264979767194)*y+(-0.501554886291067+I*0.20063886701082434)*z+(0.8940143521850461+I*-0.6592908066364427);
+r_1_1=(0.9630344223550988+I*0.4510803480062464)*y+(0.02431697063554883+I*0.30716942440257444)*z+(-0.6398553389938988+I*-0.7700821282813823);
+HF=Tpath*((1)*(r_0_0)*(r_1_0)*(r_1_1))+(1-Tpath)*(f);
+
+END;
+
+
+*************** version information ***************
+Bertini(TM) v1.6
+GMP v6.0.0, MPFR v3.1.2
+
+Authors:
+D.J. Bates, J.D. Hauenstein,
+A.J. Sommese, C.W. Wampler
+

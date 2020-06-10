@@ -129,29 +129,11 @@ variable_group y,z;
 
 Solutions in a &#39;linearProduct&#39; directory and :
 depth &gt;= 0 satisfy f = 0
-
-Using start solution
-0.8972051648666362 -0.39898639680275916
--0.9077031676898859 -0.3943108899739127
--0.7428696303170752 0.3495090812140429
-
-Using dimension linears
-l[0][0]
-(0.3062182229418371+I*0.482813554170906)*(x-(0.8972051648666362+I*-0.39898639680275916))
-l[1][0]
-(0.5383822429503189+I*0.2503219791419471)*(y-(-0.9077031676898859+I*-0.3943108899739127))+(-0.07136625067974389+I*0.41584687898265527)*(z-(-0.7428696303170752+I*0.3495090812140429))
-l[1][1]
-(0.5799231424277893+I*-0.7932545584001651)*(y-(-0.9077031676898859+I*-0.3943108899739127))+(0.24977464415923056+I*-0.5077801479313844)*(z-(-0.7428696303170752+I*0.3495090812140429))
-
-Using degree linears
-(0.1464920179273812 + I*-0.6465502281501778)*x+(-0.5072844892586013 + I*-0.5293561596437888)
-(-0.8537330553628488 + I*0.30734891050065705)*y+(-0.3196125729586834 + I*-0.031611872298001886)*z+(-0.8962913409195759 + I*-0.9589522119882019)
-(0.01635233928502866 + I*0.1209387447477257)*y+(-0.447832569204752 + I*-0.2948052058911983)*z+(0.03416469622921814 + I*-0.6240129128345355)
 exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
-ROGRESS
+PROGRESS
 Depth 0: 1
 
 ----------------------------------------------------------------
@@ -170,13 +152,11 @@ Done.</code></pre>
 <span id="cb8-4"><a href="#cb8-4"></a>    └── <span class="ex">solution_tracking_depth_0_gens_1_dim_0_2_varGroup_1_regenLinear_1_pointId_76815293686_175634001278</span></span>
 <span id="cb8-5"><a href="#cb8-5"></a></span>
 <span id="cb8-6"><a href="#cb8-6"></a><span class="ex">1</span> directory, 1 file</span></code></pre></div>
-<p>The folder <code>depth_0</code> contains the point of intersection of <span class="math inline">\(x = 0\)</span> and the linear equation <code>l[1][0]</code>, which is given by</p>
-<pre><code>(0.5383822429503189+I*0.2503219791419471)*(y-(-0.9077031676898859+I*-0.3943108899739127))+(-0.07136625067974389+I*0.41584687898265527)*(z-(-0.7428696303170752+I*0.3495090812140429))</code></pre>
-<p>This point is the following.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a>$ <span class="fu">cat</span> run/_completed_smooth_solutions/depth_0/*</span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="ex">-4.048696831470263e-16</span> 8.173382666818587e-16</span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="ex">-9.077031676898859e-01</span> -3.943108899739126e-01</span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="ex">-7.428696303170752e-01</span> 3.495090812140431e-01</span></code></pre></div>
+<p>The folder <code>depth_0</code> contains the point of intersection of <span class="math inline">\(x = 0\)</span> a random linear equations. This point is the following.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a>$ <span class="fu">cat</span> run/_completed_smooth_solutions/depth_0/*</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="ex">-4.048696831470263e-16</span> 8.173382666818587e-16</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="ex">-9.077031676898859e-01</span> -3.943108899739126e-01</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="ex">-7.428696303170752e-01</span> 3.495090812140431e-01</span></code></pre></div>
 </body>
 </html>

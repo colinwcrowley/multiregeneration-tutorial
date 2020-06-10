@@ -128,24 +128,6 @@ variable_group y,z;
 
 Solutions in a &#39;linearProduct&#39; directory and :
 depth &gt;= 0 satisfy f = 0
-
-Using start solution
-0.339452505670613 0.4060281681158975
-0.446719760208782 -0.4172764993463929
--0.16345069447847305 -0.5187760531823213
-
-Using dimension linears
-l[0][0]
-(-0.8236171061170718+I*0.17149933408966112)*(x-(0.339452505670613+I*0.4060281681158975))
-l[1][0]
-(-0.44848480182493833+I*0.9861832041282239)*(y-(0.446719760208782+I*-0.4172764993463929))+(0.5644002788819293+I*0.3079490735863708)*(z-(-0.16345069447847305+I*-0.5187760531823213))
-l[1][1]
-(0.3347143679187383+I*0.478534065906596)*(y-(0.446719760208782+I*-0.4172764993463929))+(0.6568468796209348+I*-0.7023666310410002)*(z-(-0.16345069447847305+I*-0.5187760531823213))
-
-Using degree linears
-(0.006410396981212818 + I*-0.19904537523153643)*x+(-0.478777600434954 + I*-0.11302473112870004)
-(-0.4404874877027145 + I*-0.8283982822292288)*y+(0.7956561053076561 + I*0.8980788888786022)*z+(-0.05818781668796591 + I*0.7407909947711075)
-(-0.9602436021382776 + I*-0.06924400140021336)*y+(0.7105283558533997 + I*-0.9488020138454414)*z+(-0.13787259160711773 + I*-0.8099609110885946)
 exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
@@ -169,13 +151,11 @@ Done.</code></pre>
 <span id="cb8-4"><a href="#cb8-4"></a>    └── <span class="ex">solution_tracking_depth_0_gens_1_dim_1_1_varGroup_1_regenLinear_1_pointId_420399841269_434492049963</span></span>
 <span id="cb8-5"><a href="#cb8-5"></a></span>
 <span id="cb8-6"><a href="#cb8-6"></a><span class="ex">1</span> directory, 1 file</span></code></pre></div>
-<p>The folder <code>depth_0</code> contains the point of intersection of <span class="math inline">\(z = 0\)</span> and the linear equation <code>l[1][0]</code>, which is given by</p>
-<pre><code>(-0.44848480182493833+I*0.9861832041282239)*(y-(0.446719760208782+I*-0.4172764993463929))+(0.5644002788819293+I*0.3079490735863708)*(z-(-0.16345069447847305+I*-0.5187760531823213))</code></pre>
-<p>This point is the following.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a>$ <span class="fu">cat</span> run/_completed_smooth_solutions/depth_0/*</span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="ex">3.394525056706128e-01</span> 4.060281681158974e-01</span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="ex">1.326130072769161e-01</span> -3.428814811548347e-01</span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="ex">8.117682338556469e-17</span> 4.004079930720481e-17</span></code></pre></div>
+<p>The folder <code>depth_0</code> contains the point of intersection of <span class="math inline">\(z = 0\)</span> and the linear equation <code>l[1][0]</code>, which can be found in <code>run/_tracking_information</code>. This point is the following.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a>$ <span class="fu">cat</span> run/_completed_smooth_solutions/depth_0/*</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="ex">3.394525056706128e-01</span> 4.060281681158974e-01</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="ex">1.326130072769161e-01</span> -3.428814811548347e-01</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="ex">8.117682338556469e-17</span> 4.004079930720481e-17</span></code></pre></div>
 </body>
 </html>

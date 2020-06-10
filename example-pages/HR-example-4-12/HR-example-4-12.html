@@ -91,6 +91,7 @@ pre, code, pre code {
 }
 </style>
 <h2 id="an-example-in-mathbbp2-times-mathbbp2.">An example in <span class="math inline">\(\mathbb{P}^2 \times \mathbb{P}^2\)</span>.</h2>
+<h4 id="page-author-colin-crowley">Page Author: <a href="https://sites.google.com/view/colincrowley/home">Colin Crowley</a></h4>
 <p>This example of multiregeneration is discusses as example 4.12 in <a href="https://arxiv.org/abs/1507.07069">this paper</a>.</p>
 <h3 id="defining-equations">Defining equations</h3>
 <p>Consider the multiprojective variety consisting of points <span class="math inline">\([x_0:x_1:x_2] \times [y_0:y_1:y_2] \in \mathbb{P}^2 \times \mathbb{P}^2\)</span> defined by the following equations.</p>
@@ -143,29 +144,6 @@ Solutions in a &#39;linearProduct&#39; directory and :
 depth &gt;= 0 satisfy f1 = 0
 depth &gt;= 1 satisfy f2 = 0
 depth &gt;= 2 satisfy f3 = 0
-
-Using start solution
--0.8749338308503931 0.16717668108666883
-0.5984584523898129 -0.9570739354617974
-0.5391417942550696 -0.10888092532493299
-0.9932304913992482 0.01052347171019452
--0.6718369239380377 0.6588427274942785
--0.3845297649873347 0.5862605017103801
-
-Using dimension linears
-l[0][0]
-(0.5582608860709224+I*-0.7796688378627421)*((0.5391417942550696+I*-0.10888092532493299)*x0-(-0.8749338308503931+I*0.16717668108666883)*x2)+(-0.18472564929101698+I*0.7456454889007333)*((0.5391417942550696+I*-0.10888092532493299)*x1-(0.5984584523898129+I*-0.9570739354617974)*x2)
-l[0][1]
-(0.9809665651137622+I*0.6029865545238269)*((0.5391417942550696+I*-0.10888092532493299)*x0-(-0.8749338308503931+I*0.16717668108666883)*x2)+(0.7395469698280754+I*-0.9406140867043447)*((0.5391417942550696+I*-0.10888092532493299)*x1-(0.5984584523898129+I*-0.9570739354617974)*x2)
-l[1][0]
-(0.33445398317098585+I*-0.8995427487070253)*((-0.3845297649873347+I*0.5862605017103801)*y0-(0.9932304913992482+I*0.01052347171019452)*y2)+(-0.6435543621776758+I*0.28509213903864294)*((-0.3845297649873347+I*0.5862605017103801)*y1-(-0.6718369239380377+I*0.6588427274942785)*y2)
-l[1][1]
-(0.8598334945161197+I*-0.27342777460068945)*((-0.3845297649873347+I*0.5862605017103801)*y0-(0.9932304913992482+I*0.01052347171019452)*y2)+(0.18833165049122114+I*-0.2562398921624629)*((-0.3845297649873347+I*0.5862605017103801)*y1-(-0.6718369239380377+I*0.6588427274942785)*y2)
-
-Using degree linears
-(0.4262464708517326 + I*0.17774639967152805)*x0+(-0.2692691273654415 + I*-0.3580756760571744)*x1+(-0.38817730910894443 + I*0.7553437494349051)*x2
-(0.6211028548342328 + I*0.03736944293550404)*y0+(0.45998072953982594 + I*0.5390829841861211)*y1+(0.8289825494097245 + I*-0.0916779408617765)*y2
-(-0.3210896019473253 + I*0.4597119905247675)*y0+(0.9779394387779623 + I*0.5071703555580802)*y1+(0.9598541605005511 + I*-0.7207719111384725)*y2
 exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
@@ -181,9 +159,9 @@ Depth 2: 5
 ----------------------------------------------------------------
                                | 0  1
 ----------------------------------------------------------------
+  1                              2  0  
   1                              1  1  
   2                              0  1  
-  1                              2  0  
   1                              1  0  
 Done.</code></pre>
 <p>Adding up the multidegree coefficients, we see that all irreducible components <span class="math inline">\(\mathcal{S_1}, \mathcal{S_2}, \mathcal{C_1},\)</span> and <span class="math inline">\(\mathcal{C_2}\)</span> are accounted for. Note that <code>multiregeneration.py</code> does not identify irreducible components. ### A witness set While multiregeneration.py is running, it creates a directory called <code>run</code> where it stores the partial witness set data. This data is organized in the folder <code>run/_completed_smooth_solutions</code>.</p>
@@ -242,6 +220,6 @@ Done.</code></pre>
 <span id="cb9-34"><a href="#cb9-34"></a><span class="ex">1.000000000000000e+00</span> 0.000000000000000e+00</span>
 <span id="cb9-35"><a href="#cb9-35"></a><span class="ex">1.256077483161474e-16</span> -5.218590840865388e-17</span>
 <span id="cb9-36"><a href="#cb9-36"></a><span class="ex">-7.715775863807838e-17</span> 3.305979645270316e-17</span></code></pre></div>
-<p>and the linear equations that are added to <span class="math inline">\(G_1,G_2,G_3\)</span> to obtain these points are given as the <code>l[i][j]</code> in the output above.</p>
+<p>and the linear equations that are added to <span class="math inline">\(G_1,G_2,G_3\)</span> to obtain these points are given as the <code>l[i][j]</code> in file <code>run/_tracking_information</code>.</p>
 </body>
 </html>
