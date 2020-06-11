@@ -276,7 +276,7 @@ closed* if it is of the form <img src="/tex/b681649ca92452570df58d02400620d7.svg
 polynomials <img src="/tex/9b6dbadab1b122f6d297345e9d3b8dd7.svg?invert_in_darkmode&sanitize=true" align=middle width=12.69888674999999pt height=22.831056599999986pt/>. Similarly, a set <img src="/tex/bcacf8f00348d64dce7d814cc1af184a.svg?invert_in_darkmode&sanitize=true" align=middle width=52.418138849999984pt height=22.648391699999998pt/> is
 *algebraic* or *Zariski closed* if it is of the form
 <img src="/tex/b681649ca92452570df58d02400620d7.svg?invert_in_darkmode&sanitize=true" align=middle width=96.67806719999999pt height=24.65753399999998pt/> for homogeneous polynomials <img src="/tex/9b6dbadab1b122f6d297345e9d3b8dd7.svg?invert_in_darkmode&sanitize=true" align=middle width=12.69888674999999pt height=22.831056599999986pt/>. If an
-algebraic set is the union of finitly many algebraic proper subsets, the
+algebraic set is the union of finitely many algebraic proper subsets, the
 it is *reducible*. An algebraic set that is not reducible is
 *irreducible*. If <img src="/tex/53d147e7f3fe6e47ee05b88b166bd3f6.svg?invert_in_darkmode&sanitize=true" align=middle width=12.32879834999999pt height=22.465723500000017pt/> is an algebraic set, then a maximal irreducible
 algebraic subset of <img src="/tex/53d147e7f3fe6e47ee05b88b166bd3f6.svg?invert_in_darkmode&sanitize=true" align=middle width=12.32879834999999pt height=22.465723500000017pt/> is called an *irreducible component of <img src="/tex/53d147e7f3fe6e47ee05b88b166bd3f6.svg?invert_in_darkmode&sanitize=true" align=middle width=12.32879834999999pt height=22.465723500000017pt/>*, or
@@ -324,7 +324,7 @@ coefficients <img src="/tex/65ed4b231dcf18a70bae40e50d48c9c0.svg?invert_in_darkm
 imaginary parts in <img src="/tex/a91e9fd592317527078e69a240fb943b.svg?invert_in_darkmode&sanitize=true" align=middle width=49.31516864999999pt height=24.65753399999998pt/>. If coefficients are chosen randomly in
 this way, then it is a fact that anything true of a "generic hyperplane"
 will be true of a random hyperplane with probability one. For those
-familiar with projective geometry who would like a more rigourous
+familiar with projective geometry who would like a more rigorous
 definition of generic, see [@SWBook].
 
 The following fact is often proved with the use of more powerful
@@ -394,6 +394,6 @@ seconds, so you can experiment with parallel processing, depth first
 order, and using multiple variable groups versus a single variable
 group.
 
-[^1]: For those farmiliar with algebraic geometry, the degree of a
+[^1]: For those familiar with algebraic geometry, the degree of a
     variety in $\mathbb{C}^n$ or $\mathbb{P}^n$ is not an isomorphism
     invariant, since it depends on the embedding.
