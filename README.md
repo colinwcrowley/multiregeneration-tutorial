@@ -34,7 +34,7 @@ Input files
 
 Say that we are given the following two polynomials in the variables
 <img src="/tex/0acac2a2d5d05a8394e21a70a71041b4.svg?invert_in_darkmode&sanitize=true" align=middle width=25.350096749999988pt height=14.15524440000002pt/>. <p align="center"><img src="/tex/a8546fc93b1c9e52664a8bdf30f5ee4e.svg?invert_in_darkmode&sanitize=true" align=middle width=137.57593905pt height=41.09589pt/></p> By inspection, we see that the set
-of solutions consists of two points <img src="/tex/7c7e75ec4386aa242a1d739aef7ce8be.svg?invert_in_darkmode&sanitize=true" align=middle width=96.80377244999998pt height=24.65753399999998pt/>. To solve the
+of solutions consists of two points <img src="/tex/7c7e75ec4386aa242a1d739aef7ce8be.svg?invert_in_darkmode&sanitize=true" align=middle width=96.80377244999998pt height=24.65753399999998pt/> To solve the
 system above using the multiregeneration software, let's change into the
 folder "getting-started", which contains the following three files.\
 **bertiniInput\_variables**
