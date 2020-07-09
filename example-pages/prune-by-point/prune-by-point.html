@@ -95,7 +95,7 @@ pre, code, pre code {
 <p><span class="math display">\[
 (x-y)(x^2+y^2+z^2) = 0
 \]</span></p>
-<p>This variety consists of the union of the quatratic hypersurface <span class="math inline">\(x^2 + y^2 + z^2 = 0\)</span> unioned with the hyperplane <span class="math inline">\(x - y = 0\)</span>. Say we want a witness set for the component <span class="math inline">\(x^2 + y^2 + z^2 = 0\)</span>.</p>
+<p>This variety consists of the union of the quadratic hypersurface <span class="math inline">\(x^2 + y^2 + z^2 = 0\)</span> together with the hyperplane <span class="math inline">\(x - y = 0\)</span>. Say we want a witness set for the component <span class="math inline">\(x^2 + y^2 + z^2 = 0\)</span>.</p>
 <h3 id="input-format">Input format</h3>
 <p>There are four files that comprise the input to multiregeneration.py</p>
 <h4 id="inputfile.py">inputFile.py</h4>
@@ -103,7 +103,7 @@ pre, code, pre code {
 <span id="cb1-2"><a href="#cb1-2"></a>verbose <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="kw">def</span> pruneByPoint(coordinates):</span>
 <span id="cb1-4"><a href="#cb1-4"></a>    <span class="co"># If x-y is satisfied to within a </span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>    <span class="co"># tolerance of 1e-16, then the point will lie on the &#39;extra&#39; </span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="co"># tolerance of 1e-10, then the point will lie on the &#39;extra&#39; </span></span>
 <span id="cb1-6"><a href="#cb1-6"></a>    <span class="co"># component, and should be pruned.</span></span>
 <span id="cb1-7"><a href="#cb1-7"></a></span>
 <span id="cb1-8"><a href="#cb1-8"></a>    <span class="cf">if</span> <span class="bu">abs</span>(coordinates[<span class="dv">0</span>] <span class="op">-</span> coordinates[<span class="dv">1</span>]) <span class="op">&lt;</span> <span class="fl">1e-10</span>:</span>
@@ -133,22 +133,23 @@ pre, code, pre code {
 These variable groups have been selected:
 variable_group x,y,z;
 
-Solutions in a &#39;linearProduct&#39; directory and :
+Solutions are found in run/_completed_smooth_solutions and:
 depth &gt;= 0 satisfy f = 0
-exploring tree in order depthFirst
+
+Exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
 PROGRESS
 Depth 0: 2
 
+------------------------------------------------------------------
+| # of smooth isolated solutions | # of general linear equations |
+| found                          | added with variables in group |
+------------------------------------------------------------------
+                                 | 0
 ----------------------------------------------------------------
-| # smooth isolated solutions  | # of general linear equations |
-| found                        | added with variables in group |
-----------------------------------------------------------------
-                               | 0
-----------------------------------------------------------------
-  2                              2  
+  2                                2  
 Done.</code></pre>
 <h3 id="a-witness-set">A witness set</h3>
 <p>While multiregeneration.py is running, it creates a directory called <code>run</code> where it stores the partial witness set data. This data is organized in the folder <code>run/_completed_smooth_solutions</code>.</p>

@@ -96,7 +96,7 @@ pre, code, pre code {
 x*y*z = 0
 \]</span></p>
 <p>Variable group number zero is <span class="math inline">\(x\)</span>, and variable group number one is <span class="math inline">\(y,z\)</span>.</p>
-<p>This variety consists of the union of the three coordinate hyperplanes. Say we would like a witness set for all components in which the variables <span class="math inline">\(y,z\)</span> are not uniformly zero</p>
+<p>This variety consists of the union of the three coordinate hyperplanes. Say we would like a witness set for all components on which none of the coordinate functions in variable group one are not uniformly zero. (In this example, the plane <span class="math inline">\(x = 0\)</span> is the only such component.)</p>
 <h3 id="input-format">Input format</h3>
 <p>There are four files that comprise the input to multiregeneration.py</p>
 <h4 id="inputfile.py">inputFile.py</h4>
@@ -115,7 +115,7 @@ x*y*z = 0
 <h4 id="bertiniinput_trackingoptions">bertiniInput_trackingOptions</h4>
 <pre><code>SecurityLevel:1;</code></pre>
 <h3 id="running-multiregeneration.py">Running multiregeneration.py</h3>
-<p>Make sure that the four files discussed above are in your current directory</p>
+<p>Make sure that the four files discussed above are in your current directory.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a>$ <span class="fu">ls</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="ex">bertiniInput_equations</span>  bertiniInput_trackingOptions  bertiniInput_variables  inputFile.py</span></code></pre></div>
 <p>and then run multiregeneration.py from this directory using python.</p>
@@ -127,22 +127,23 @@ These variable groups have been selected:
 variable_group x;
 variable_group y,z;
 
-Solutions in a &#39;linearProduct&#39; directory and :
+Solutions are found in run/_completed_smooth_solutions and:
 depth &gt;= 0 satisfy f = 0
-exploring tree in order depthFirst
+
+Exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
 PROGRESS
 Depth 0: 1
 
+------------------------------------------------------------------
+| # of smooth isolated solutions | # of general linear equations |
+| found                          | added with variables in group |
+------------------------------------------------------------------
+                                 | 0  1
 ----------------------------------------------------------------
-| # smooth isolated solutions  | # of general linear equations |
-| found                        | added with variables in group |
-----------------------------------------------------------------
-                               | 0  1
-----------------------------------------------------------------
-  1                              0  2  
+  1                                0  2  
 Done.</code></pre>
 <h3 id="a-witness-set">A witness set</h3>
 <p>While multiregeneration.py is running, it creates a directory called <code>run</code> where it stores the partial witness set data. This data is organized in the folder <code>run/_completed_smooth_solutions</code>.</p>

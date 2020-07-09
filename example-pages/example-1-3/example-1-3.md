@@ -11,6 +11,8 @@ pre, code, pre code {
 <!-- We will demonstrate how multiregeneration.py handles noncomplete --> 
 <!-- intersections using the classical example of the twisted cubic. -->
 
+Here we compute the multidegree of a specific curve in $\mathbb{P}^3 \times \mathbb{P}^1$.
+
 ### Defining equations
 Consider the curve in $\mathbb{P}^3 \times \mathbb{P}^1$ given as the 
 points $[x_0:x_1:x_2:x_3] \times [y_0:y_1]$ which satisfy the following 
@@ -35,15 +37,15 @@ verbose = 1
 This file contains the multidegrees of the defining equations, as well 
 as additional options. 
 
-The multidegree vector of the each equations is 
-$\text{deg}(f_i) = (1,1)$, since each equation is linear in the first 
-variable group $\{x_i\}$ and also linear in the second variable group 
+The multidegree vector of each equations is 
+$\text{deg}(f_i) = (1,1)$, since each equation is linear in the 
+variable group $\{x_i\}$ and also linear in the variable group 
 $\{y_i\}$. In general the variable `degree` should be set to 
 $(\text{deg}(f_0), \text{deg}(f_1), \ldots, \text{deg}(f_{n-1}))$, which 
 in this case is $((1,1), (1,1), (1,1))$.
 
 The option `verbose=1` tells 
-multiregeneration.py to display a progress update...
+multiregeneration.py to display a progress update.
 
 #### bertiniInput_variables
 ```c
@@ -89,11 +91,12 @@ These variable groups have been selected:
 hom_variable_group x_0,x_1,x_2,x_3;
 hom_variable_group y_0,y_1;
 
-Solutions in a 'linearProduct' directory and :
+Solutions are found in run/_completed_smooth_solutions and:
 depth >= 0 satisfy f1 = 0
 depth >= 1 satisfy f2 = 0
 depth >= 2 satisfy f3 = 0
-exploring tree in order depthFirst
+
+Exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
@@ -102,14 +105,14 @@ Depth 0: 2
 Depth 1: 3
 Depth 2: 4
 
+------------------------------------------------------------------
+| # of smooth isolated solutions | # of general linear equations |
+| found                          | added with variables in group |
+------------------------------------------------------------------
+                                 | 0  1
 ----------------------------------------------------------------
-| # smooth isolated solutions  | # of general linear equations |
-| found                        | added with variables in group |
-----------------------------------------------------------------
-                               | 0  1
-----------------------------------------------------------------
-  3                              1  0  
-  1                              0  1  
+  3                                1  0  
+  1                                0  1  
 Done.
 ```
 
@@ -136,8 +139,8 @@ run/_completed_smooth_solutions/
 3 directories, 9 files
 ```
 
-The folder `depth_n` contains the data of a witness set collection for 
-the system $f_0, \ldots, f_{n-1}$. 
+The folder `depth_k` contains the data of a witness set collection for 
+the system $f_0, \ldots, f_{k}$. 
 
 Since this variety is a complete intersection $\{f_0,f_1,f_2\}$ is a 
 witness system. 
@@ -145,12 +148,12 @@ witness system.
 The remainder of the data for a multihomogenious witness 
 set is given by the intersection of the variety with linear spaces of 
 codimensions $(0,1)$ and $(1,0)$. In general the intersection of the variety 
-$f_0 = \ldots = f_{n-1}$ with a linear space of codimension $(n_1, 
-\ldots, n_k)$ is comprised of those files of `depth_n` containing the 
-string `dim_n1_..._nk`. 
+$f_0 = \ldots = f_{k} = 0$ with a linear space of codimension $(n_0, 
+\ldots, n_k)$ is stored in those files of `depth_k` containing the 
+string `dim_n0_..._nk`. 
 
-In this example there is one intesection point 
-with a linear space of codimension $(0,1)$ which is
+In this example there is one intersection point 
+with a linear space of codimension $(0,1)$ which is the following.
 
 ```bash
 $ cat run/_completed_smooth_solutions/depth_2/solution_tracking_depth_2_gens_1_1_1_dim_0_1_varGroup_1_regenLinear_1_pointId_137429507871_741856788249 
@@ -164,7 +167,7 @@ $ cat run/_completed_smooth_solutions/depth_2/solution_tracking_depth_2_gens_1_1
 ```
 
 There are three intersection points with a linear space of codimension 
-$(1,0)$ which are
+$(1,0)$ which are the following.
 ```bash
 $ cat run/_completed_smooth_solutions/depth_2/solution_tracking_depth_2_gens_1_1_1_dim_1_0*
 
@@ -191,5 +194,4 @@ $ cat run/_completed_smooth_solutions/depth_2/solution_tracking_depth_2_gens_1_1
 ```
 
 The linear equations defining these linear spaces are given in the 
-`run/_tracking_information` as `l[0][2]` and 
-`l[1][0]`.
+`run/_tracking_information` as `l[0][2]` and `l[1][0]`.

@@ -8,8 +8,8 @@ pre, code, pre code {
 
 #### Authors: [Colin Crowley](https://sites.google.com/view/colincrowley/home), [Jose Israel Rodriguez](https://www.math.wisc.edu/~jose/), Jacob Weiker, and Jacob Zoromski
 
-For a derivation of this system and and a method for solving with 
-polyhedral homotopy methods and [PHCpack](https://homepages.math.uic.edu/~jan/PHCpack/phcpack.html), see Chapter 6 of [Sturmfels2002](https://math.berkeley.edu/~bernd/cbms.pdf). 
+For a derivation of this system and how to solve it with 
+polyhedral homotopy methods ([PHCpack](https://homepages.math.uic.edu/~jan/PHCpack/phcpack.html)), see Chapter 6 of [Sturmfels2002](https://math.berkeley.edu/~bernd/cbms.pdf). 
 
 
 ### Defining equations
@@ -34,7 +34,7 @@ $$
 \Pi_b :&= B_{11}a_1b_1+B_{12}a_1b_2+B_{21}a_2b_1+ B_{22} a_2 b_2,
 \end{align*}
 $$
-contains the set of Nash equilibria.
+contains the set of mixed Nash equilibria.
 
 ### Input format
 

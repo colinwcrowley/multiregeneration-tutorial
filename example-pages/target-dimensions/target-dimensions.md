@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="modest.css">
+<slink rel="stylesheet" href="modest.css">
 <style>
 pre, code, pre code {
   max-height: 400px;
@@ -11,7 +11,7 @@ pre, code, pre code {
 Here we demonstrate how to use the user defined variable 
 `targetDimensions`. This can be used when we have equations defining a 
 variety, but we only care about its multidegree coefficients for certain 
-multidimension (or set of multidimensions).
+multidimensions.
 
 ### Defining equations
 
@@ -29,7 +29,9 @@ $$
 
 This variety consists of the union of the hyperplane defined by $x=0$ 
 and the curve defined by $x^2 + y + z = 0$ and $x-2y^2+1=0$. Say we are 
-only interested in the multidegree coefficient for dimension $(1,0,0)$.
+only interested in the multidegree coefficient for dimension $(1,0,0)$. 
+This is equivalent to asking how many isolated solutions there will be 
+when a general value is chosen for $x$.
 
 
 ### Input format
@@ -89,10 +91,11 @@ variable_group x;
 variable_group y;
 variable_group z;
 
-Solutions in a 'linearProduct' directory and :
+Solutions are found in run/_completed_smooth_solutions and:
 depth >= 0 satisfy f1 = 0
 depth >= 1 satisfy f2 = 0
-exploring tree in order depthFirst
+
+Exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
@@ -100,13 +103,13 @@ PROGRESS
 Depth 0: 2
 Depth 1: 2
 
+------------------------------------------------------------------
+| # of smooth isolated solutions | # of general linear equations |
+| found                          | added with variables in group |
+------------------------------------------------------------------
+                                 | 0  1  2
 ----------------------------------------------------------------
-| # smooth isolated solutions  | # of general linear equations |
-| found                        | added with variables in group |
-----------------------------------------------------------------
-                               | 0  1  2
-----------------------------------------------------------------
-  2                              1  0  0  
+  2                                1  0  0  
 Done.
 ```
 
@@ -129,7 +132,7 @@ run/_completed_smooth_solutions/
 
 The folder `depth_1` contains the point of intersection of 
 the variety in this example and the 
-linear equations `l[1][0]` and `l[2][0]`, which can be found in 
+linear equation `l[0][0]` which can be found in 
 `run/_tracking_information`.
 These points are the following.
 ```bash 

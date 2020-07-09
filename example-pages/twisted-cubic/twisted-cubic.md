@@ -20,16 +20,17 @@ The image is implicitly given as the set of points $[x_0:x_1:x_2:x_3]
 \in \mathbb{P}^3$ which satisfy the following equations.
 $$
 \begin{align*}
-    f_1 &= x_1^2 - x_0x_2\\
-    f_2 &= x_2^2 - x_1x_3\\
-    f_3 &= x_0x_3 - x_1x_2
+    f_0 &= x_1^2 - x_0x_2\\
+    f_1 &= x_2^2 - x_1x_3\\
+    f_2 &= x_0x_3 - x_1x_2
 \end{align*}
 $$
 The twisted cubic is not a *complete intersection* in the sense that it 
 is codimension $2$ but it cannot be defined by only two equations. 
 Geometrically, the first two equations define an algebraic set 
 consisting of the twisted cubic together with the line $x_1=x_2=0$, and 
-the third equation cuts away this extra line.
+the third equation cuts away this extra line. This can be seen easily 
+with the help of "Macaulay2":
 
 ```
 i1 : R = QQ[x_0..x_3]
@@ -61,7 +62,7 @@ verbose = 1
 ```
 This file contains the multidegrees of the defining equations, as well 
 as additional options. For example, `verbose=1` tells 
-multiregeneration.py to display a progress update...
+multiregeneration.py to display a progress update.
 
 #### bertiniInput_variables
 ```c
@@ -69,11 +70,11 @@ hom_variable_group x_0, x_1, x_2, x_3;
 ```
 #### bertiniInput_equations
 ```c
-function f1, f2, f3;
+function f0, f1, f2;
 
-f1 = x_1^2 - x_0*x_2;
-f2 = x_2^2 - x_1*x_3;
-f3 = x_0*x_3 - x_1*x_2;
+f0 = x_1^2 - x_0*x_2;
+f1 = x_2^2 - x_1*x_3;
+f2 = x_0*x_3 - x_1*x_2;
 ```
 #### bertiniInput_trackingOptions
 ```
@@ -99,11 +100,12 @@ The output will look like the following.
 These variable groups have been selected:
 hom_variable_group x_0, x_1, x_2, x_3;
 
-Solutions in a 'linearProduct' directory and :
-depth >= 0 satisfy f1 = 0
-depth >= 1 satisfy f2 = 0
-depth >= 2 satisfy f3 = 0
-exploring tree in order depthFirst
+Solutions are found in run/_completed_smooth_solutions and:
+depth >= 0 satisfy f0 = 0
+depth >= 1 satisfy f1 = 0
+depth >= 2 satisfy f2 = 0
+
+Exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
@@ -112,13 +114,13 @@ Depth 0: 2
 Depth 1: 4
 Depth 2: 3
 
+------------------------------------------------------------------
+| # of smooth isolated solutions | # of general linear equations |
+| found                          | added with variables in group |
+------------------------------------------------------------------
+                                 | 0
 ----------------------------------------------------------------
-| # smooth isolated solutions  | # of general linear equations |
-| found                        | added with variables in group |
-----------------------------------------------------------------
-                               | 0
-----------------------------------------------------------------
-  3                              1  
+  3                                1  
 Done.
 ```
 
@@ -145,11 +147,11 @@ run/_completed_smooth_solutions/
 3 directories, 9 files
 ```
 
-The folder `depth_n` contains the data of a witness set collection for 
-the system $f_0, \ldots, f_{n-1}$. We see that a witness set for the 
-variety $f_1=f_2=0$ consists of four point, which is expected since $f_1 
-= f_2 = 0$ describes a cubic curve together with a line. A witness set 
-for the twisted cubic $f_1 = f_2 = f_3 = 0$ consists of one less point, 
+The folder `depth_k` contains the data of a witness set collection for 
+the system $f_0, \ldots, f_{k}$. We see that a witness set for the 
+variety $f_0=f_1=0$ consists of four point, which is expected since $f_0 
+= f_1 = 0$ describes a cubic curve together with a line. A witness set 
+for the twisted cubic $f_0 = f_1 = f_2 = 0$ consists of one less point, 
 since the extra line $x_1 = x_2 = 0$ is not included.
 
 Therefore a witness system for the twisted cubic is given by the 

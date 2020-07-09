@@ -107,7 +107,7 @@ G_3 &amp;= x_0y_1y_2 - x_1y_0y_2 = 0.
 <li><span class="math inline">\(\mathcal{S_1} = \{[x_0:x_1:x_1] \times [1:0:0]\}\)</span> having multidimension <span class="math inline">\((2,0)\)</span> with multidegree coefficient <span class="math inline">\(1\)</span>.</li>
 <li><span class="math inline">\(\mathcal{S_2} = \{[x_0:x_1:0] \times [y_0:y_1:0]\}\)</span> having multidimension <span class="math inline">\((1,1)\)</span> with multidegree coefficient <span class="math inline">\(1\)</span>.</li>
 <li><span class="math inline">\(\mathcal{C_1} = \{[x_0:x_1:x_2] \times [y_0:y_1:y_2]\}\)</span> having multidimension <span class="math inline">\((1,0)\)</span> and <span class="math inline">\((0,1)\)</span> with multidegree coefficients <span class="math inline">\(1\)</span> and <span class="math inline">\(1\)</span> respectively.</li>
-<li><span class="math inline">\(\mathcal{C_2} = \{[0:0:1] \times [y_0:0:y_2]\}\)</span> having multidimension <span class="math inline">\((0,1)\)</span> with multidegree coefficient <span class="math inline">\(1\)</span>.</li>
+<li><span class="math inline">\(\mathcal{C_2} = \{[0:0:1] \times [y_0:0:y_2]\}\)</span> having multidimension <span class="math inline">\((0,1)\)</span> with multidegree <br/> coefficient <span class="math inline">\(1\)</span>.</li>
 </ul>
 <p>When we run <code>multiregeneration.py</code> we will see this information reflected in witness set.</p>
 <h3 id="input-format">Input format</h3>
@@ -140,11 +140,12 @@ These variable groups have been selected:
 hom_variable_group x0, x1, x2;
 hom_variable_group y0, y1, y2;
 
-Solutions in a &#39;linearProduct&#39; directory and :
+Solutions are found in run/_completed_smooth_solutions and:
 depth &gt;= 0 satisfy f1 = 0
 depth &gt;= 1 satisfy f2 = 0
 depth &gt;= 2 satisfy f3 = 0
-exploring tree in order depthFirst
+
+Exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
@@ -153,16 +154,16 @@ Depth 0: 2
 Depth 1: 4
 Depth 2: 5
 
+------------------------------------------------------------------
+| # of smooth isolated solutions | # of general linear equations |
+| found                          | added with variables in group |
+------------------------------------------------------------------
+                                 | 0  1
 ----------------------------------------------------------------
-| # smooth isolated solutions  | # of general linear equations |
-| found                        | added with variables in group |
-----------------------------------------------------------------
-                               | 0  1
-----------------------------------------------------------------
-  1                              2  0  
-  1                              1  1  
-  2                              0  1  
-  1                              1  0  
+  2                                0  1  
+  1                                1  1  
+  1                                1  0  
+  1                                2  0  
 Done.</code></pre>
 <p>Adding up the multidegree coefficients, we see that all irreducible components <span class="math inline">\(\mathcal{S_1}, \mathcal{S_2}, \mathcal{C_1},\)</span> and <span class="math inline">\(\mathcal{C_2}\)</span> are accounted for. Note that <code>multiregeneration.py</code> does not identify irreducible components. ### A witness set While multiregeneration.py is running, it creates a directory called <code>run</code> where it stores the partial witness set data. This data is organized in the folder <code>run/_completed_smooth_solutions</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a>$ <span class="ex">tree</span> run/_completed_smooth_solutions/</span>

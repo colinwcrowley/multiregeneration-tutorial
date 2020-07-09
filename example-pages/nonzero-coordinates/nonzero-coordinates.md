@@ -81,22 +81,23 @@ These variable groups have been selected:
 variable_group x;
 variable_group y,z;
 
-Solutions in a 'linearProduct' directory and :
+Solutions are found in run/_completed_smooth_solutions and:
 depth >= 0 satisfy f = 0
-exploring tree in order depthFirst
+
+Exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
 PROGRESS
 Depth 0: 1
 
+------------------------------------------------------------------
+| # of smooth isolated solutions | # of general linear equations |
+| found                          | added with variables in group |
+------------------------------------------------------------------
+                                 | 0  1
 ----------------------------------------------------------------
-| # smooth isolated solutions  | # of general linear equations |
-| found                        | added with variables in group |
-----------------------------------------------------------------
-                               | 0  1
-----------------------------------------------------------------
-  1                              1  1  
+  1                                1  1  
 Done.
 ```
 

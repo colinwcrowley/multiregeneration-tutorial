@@ -24,8 +24,8 @@ $$
 (x-y)(x^2+y^2+z^2) = 0
 $$
 
-This variety consists of the union of the quatratic hypersurface $x^2 + 
-y^2 + z^2 = 0$ unioned with the hyperplane $x - y = 0$. Say we want a 
+This variety consists of the union of the quadratic hypersurface $x^2 + 
+y^2 + z^2 = 0$ together with the hyperplane $x - y = 0$. Say we want a 
 witness set for the component $x^2 + y^2 + z^2 = 0$.
 
 
@@ -39,7 +39,7 @@ degrees = [[3]]
 verbose = 1
 def pruneByPoint(coordinates):
     # If x-y is satisfied to within a 
-    # tolerance of 1e-16, then the point will lie on the 'extra' 
+    # tolerance of 1e-10, then the point will lie on the 'extra' 
     # component, and should be pruned.
 
     if abs(coordinates[0] - coordinates[1]) < 1e-10:
@@ -94,22 +94,23 @@ The output will look like the following.
 These variable groups have been selected:
 variable_group x,y,z;
 
-Solutions in a 'linearProduct' directory and :
+Solutions are found in run/_completed_smooth_solutions and:
 depth >= 0 satisfy f = 0
-exploring tree in order depthFirst
+
+Exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
 PROGRESS
 Depth 0: 2
 
+------------------------------------------------------------------
+| # of smooth isolated solutions | # of general linear equations |
+| found                          | added with variables in group |
+------------------------------------------------------------------
+                                 | 0
 ----------------------------------------------------------------
-| # smooth isolated solutions  | # of general linear equations |
-| found                        | added with variables in group |
-----------------------------------------------------------------
-                               | 0
-----------------------------------------------------------------
-  2                              2  
+  2                                2  
 Done.
 ```
 

@@ -27,8 +27,9 @@ Variable group number zero is $x$, and variable group number one is
 $y,z$.
 
 This variety consists of the union of the three coordinate hyperplanes. 
-Say we would like a witness set for all components in which the 
-variables $y,z$ are not uniformly zero
+Say we would like a witness set for all components on which none of the 
+coordinate functions in variable group one are not uniformly zero. 
+(In this example, the plane $x = 0$ is the only such component.)
 
 
 ### Input format
@@ -67,7 +68,7 @@ SecurityLevel:1;
 ### Running multiregeneration.py
 
 Make sure that the four files discussed above are in your current 
-directory
+directory.
 ```bash
 $ ls
 bertiniInput_equations  bertiniInput_trackingOptions  bertiniInput_variables  inputFile.py
@@ -84,22 +85,23 @@ These variable groups have been selected:
 variable_group x;
 variable_group y,z;
 
-Solutions in a 'linearProduct' directory and :
+Solutions are found in run/_completed_smooth_solutions and:
 depth >= 0 satisfy f = 0
-exploring tree in order depthFirst
+
+Exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
 PROGRESS
 Depth 0: 1
 
+------------------------------------------------------------------
+| # of smooth isolated solutions | # of general linear equations |
+| found                          | added with variables in group |
+------------------------------------------------------------------
+                                 | 0  1
 ----------------------------------------------------------------
-| # smooth isolated solutions  | # of general linear equations |
-| found                        | added with variables in group |
-----------------------------------------------------------------
-                               | 0  1
-----------------------------------------------------------------
-  1                              0  2  
+  1                                0  2  
 Done.
 ```
 

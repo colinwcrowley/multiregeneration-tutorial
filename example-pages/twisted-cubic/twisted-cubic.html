@@ -96,11 +96,11 @@ pre, code, pre code {
 t_1^3].\]</span></p>
 <p>The image is implicitly given as the set of points <span class="math inline">\([x_0:x_1:x_2:x_3] \in \mathbb{P}^3\)</span> which satisfy the following equations. <span class="math display">\[
 \begin{align*}
-    f_1 &amp;= x_1^2 - x_0x_2\\
-    f_2 &amp;= x_2^2 - x_1x_3\\
-    f_3 &amp;= x_0x_3 - x_1x_2
+    f_0 &amp;= x_1^2 - x_0x_2\\
+    f_1 &amp;= x_2^2 - x_1x_3\\
+    f_2 &amp;= x_0x_3 - x_1x_2
 \end{align*}
-\]</span> The twisted cubic is not a <em>complete intersection</em> in the sense that it is codimension <span class="math inline">\(2\)</span> but it cannot be defined by only two equations. Geometrically, the first two equations define an algebraic set consisting of the twisted cubic together with the line <span class="math inline">\(x_1=x_2=0\)</span>, and the third equation cuts away this extra line.</p>
+\]</span> The twisted cubic is not a <em>complete intersection</em> in the sense that it is codimension <span class="math inline">\(2\)</span> but it cannot be defined by only two equations. Geometrically, the first two equations define an algebraic set consisting of the twisted cubic together with the line <span class="math inline">\(x_1=x_2=0\)</span>, and the third equation cuts away this extra line. This can be seen easily with the help of “Macaulay2”:</p>
 <pre><code>i1 : R = QQ[x_0..x_3]
 
 o1 = R
@@ -120,15 +120,15 @@ o2 : List</code></pre>
 <h4 id="inputfile.py">inputFile.py</h4>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>degrees <span class="op">=</span> [[<span class="dv">2</span>], [<span class="dv">2</span>], [<span class="dv">2</span>]]</span>
 <span id="cb2-2"><a href="#cb2-2"></a>verbose <span class="op">=</span> <span class="dv">1</span></span></code></pre></div>
-<p>This file contains the multidegrees of the defining equations, as well as additional options. For example, <code>verbose=1</code> tells multiregeneration.py to display a progress update…</p>
+<p>This file contains the multidegrees of the defining equations, as well as additional options. For example, <code>verbose=1</code> tells multiregeneration.py to display a progress update.</p>
 <h4 id="bertiniinput_variables">bertiniInput_variables</h4>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a>hom_variable_group x_0, x_1, x_2, x_3;</span></code></pre></div>
 <h4 id="bertiniinput_equations">bertiniInput_equations</h4>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1"></a>function f1, f2, f3;</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1"></a>function f0, f1, f2;</span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a>f1 = x_1^<span class="dv">2</span> - x_0*x_2;</span>
-<span id="cb4-4"><a href="#cb4-4"></a>f2 = x_2^<span class="dv">2</span> - x_1*x_3;</span>
-<span id="cb4-5"><a href="#cb4-5"></a>f3 = x_0*x_3 - x_1*x_2;</span></code></pre></div>
+<span id="cb4-3"><a href="#cb4-3"></a>f0 = x_1^<span class="dv">2</span> - x_0*x_2;</span>
+<span id="cb4-4"><a href="#cb4-4"></a>f1 = x_2^<span class="dv">2</span> - x_1*x_3;</span>
+<span id="cb4-5"><a href="#cb4-5"></a>f2 = x_0*x_3 - x_1*x_2;</span></code></pre></div>
 <h4 id="bertiniinput_trackingoptions">bertiniInput_trackingOptions</h4>
 <pre><code>SecurityLevel:1;</code></pre>
 <h3 id="running-multiregeneration.py">Running multiregeneration.py</h3>
@@ -143,11 +143,12 @@ o2 : List</code></pre>
 These variable groups have been selected:
 hom_variable_group x_0, x_1, x_2, x_3;
 
-Solutions in a &#39;linearProduct&#39; directory and :
-depth &gt;= 0 satisfy f1 = 0
-depth &gt;= 1 satisfy f2 = 0
-depth &gt;= 2 satisfy f3 = 0
-exploring tree in order depthFirst
+Solutions are found in run/_completed_smooth_solutions and:
+depth &gt;= 0 satisfy f0 = 0
+depth &gt;= 1 satisfy f1 = 0
+depth &gt;= 2 satisfy f2 = 0
+
+Exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
@@ -156,13 +157,13 @@ Depth 0: 2
 Depth 1: 4
 Depth 2: 3
 
+------------------------------------------------------------------
+| # of smooth isolated solutions | # of general linear equations |
+| found                          | added with variables in group |
+------------------------------------------------------------------
+                                 | 0
 ----------------------------------------------------------------
-| # smooth isolated solutions  | # of general linear equations |
-| found                        | added with variables in group |
-----------------------------------------------------------------
-                               | 0
-----------------------------------------------------------------
-  3                              1  
+  3                                1  
 Done.</code></pre>
 <h3 id="a-witness-set">A witness set</h3>
 <p>While multiregeneration.py is running, it creates a directory called <code>run</code> where it stores the partial witness set data. This data is organized in the folder <code>run/_completed_smooth_solutions</code>.</p>
@@ -182,7 +183,7 @@ Done.</code></pre>
 <span id="cb9-14"><a href="#cb9-14"></a>    └── <span class="ex">solution_vanishing_depth_2_gens_1_1_0_dim_1_pointId_957654796862_957654796862</span></span>
 <span id="cb9-15"><a href="#cb9-15"></a></span>
 <span id="cb9-16"><a href="#cb9-16"></a><span class="ex">3</span> directories, 9 files</span></code></pre></div>
-<p>The folder <code>depth_n</code> contains the data of a witness set collection for the system <span class="math inline">\(f_0, \ldots, f_{n-1}\)</span>. We see that a witness set for the variety <span class="math inline">\(f_1=f_2=0\)</span> consists of four point, which is expected since <span class="math inline">\(f_1 = f_2 = 0\)</span> describes a cubic curve together with a line. A witness set for the twisted cubic <span class="math inline">\(f_1 = f_2 = f_3 = 0\)</span> consists of one less point, since the extra line <span class="math inline">\(x_1 = x_2 = 0\)</span> is not included.</p>
+<p>The folder <code>depth_k</code> contains the data of a witness set collection for the system <span class="math inline">\(f_0, \ldots, f_{k}\)</span>. We see that a witness set for the variety <span class="math inline">\(f_0=f_1=0\)</span> consists of four point, which is expected since <span class="math inline">\(f_0 = f_1 = 0\)</span> describes a cubic curve together with a line. A witness set for the twisted cubic <span class="math inline">\(f_0 = f_1 = f_2 = 0\)</span> consists of one less point, since the extra line <span class="math inline">\(x_1 = x_2 = 0\)</span> is not included.</p>
 <p>Therefore a witness system for the twisted cubic is given by the equations <span class="math inline">\(f_1, f_2\)</span>, the linear equation <code>l[0][2]</code> which can be found in <code>run/_tracking_information</code> and the following points.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a>$ <span class="fu">cat</span> run/_completed_smooth_solutions/depth_2/*</span>
 <span id="cb10-2"><a href="#cb10-2"></a></span>

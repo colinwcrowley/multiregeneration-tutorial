@@ -39,7 +39,7 @@ components:
    multidimension $(1,0)$ and $(0,1)$ with multidegree coefficients $1$ 
    and $1$ respectively.
  - $\mathcal{C_2} = \{[0:0:1] \times [y_0:0:y_2]\}$ having 
-   multidimension $(0,1)$ with multidegree coefficient $1$.
+   multidimension $(0,1)$ with multidegree <br/> coefficient $1$.
 
 When we run `multiregeneration.py` we will see this information 
 reflected in witness set.
@@ -96,11 +96,12 @@ These variable groups have been selected:
 hom_variable_group x0, x1, x2;
 hom_variable_group y0, y1, y2;
 
-Solutions in a 'linearProduct' directory and :
+Solutions are found in run/_completed_smooth_solutions and:
 depth >= 0 satisfy f1 = 0
 depth >= 1 satisfy f2 = 0
 depth >= 2 satisfy f3 = 0
-exploring tree in order depthFirst
+
+Exploring tree in order depthFirst
 
 ################### Starting multiregeneration ####################
 
@@ -109,16 +110,16 @@ Depth 0: 2
 Depth 1: 4
 Depth 2: 5
 
+------------------------------------------------------------------
+| # of smooth isolated solutions | # of general linear equations |
+| found                          | added with variables in group |
+------------------------------------------------------------------
+                                 | 0  1
 ----------------------------------------------------------------
-| # smooth isolated solutions  | # of general linear equations |
-| found                        | added with variables in group |
-----------------------------------------------------------------
-                               | 0  1
-----------------------------------------------------------------
-  1                              2  0  
-  1                              1  1  
-  2                              0  1  
-  1                              1  0  
+  2                                0  1  
+  1                                1  1  
+  1                                1  0  
+  1                                2  0  
 Done.
 ```
 Adding up the multidegree coefficients, we see that all irreducible 
